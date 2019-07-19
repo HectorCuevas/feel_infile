@@ -93,6 +93,7 @@
     <Content Include="AnnularDocumentWS.asmx" />
     <Content Include="RegisterDocumentWS.asmx" />
     <Content Include="SolicitarToken.asmx" />
+    <Content Include="solicitud.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +108,10 @@
     <Compile Include="LlenarEstructuras.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Response.cs" />
+    <Compile Include="solicitud.asmx.cs">
+      <DependentUpon>solicitud.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SolitudFirma.cs" />
     <Compile Include="ValidateDocument.cs" />
     <Compile Include="RegisterDocument.cs" />

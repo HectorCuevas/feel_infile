@@ -13,7 +13,8 @@ namespace FELFactura
 {
     public class XMLFactura
     {
-        
+       
+
         private DataSet dstinvoicexml = new DataSet();
         private DataSet dstdetailinvoicexml = new DataSet();
         private DatosGenerales datosGenerales = new DatosGenerales();
@@ -21,7 +22,7 @@ namespace FELFactura
         private Receptor receptor = new Receptor();
         private List<Item> items = new List<Item>();
         private Totales totales = new Totales();
-        string v_rootxml ="";
+        string v_rootxml = "";
         string fac_num = "";
         public String getXML(string XMLInvoice, string XMLDetailInvoce, string path, string fac_num)
         {
@@ -29,30 +30,28 @@ namespace FELFactura
             v_rootxml = path;
             this.fac_num = fac_num;
             //convertir a dataset los string para mayor manupulacion
-            XmlToDataSet( XMLInvoice,  XMLDetailInvoce);
+            XmlToDataSet(XMLInvoice, XMLDetailInvoce);
             //llenar estructuras
             ReaderDataset();
-            
+            /*   //firmar xml por certificado
+               var nombre = fac_num.Trim() + ".xml";
+               v_rootxml = v_rootxml + @"\" + nombre;
+
+               XmlDocument myXML = FirmaDocumento.FirmarDocumento(Constants.URL_CERTIFICADO, Constants.URL_CERTIFICADO_CONTRASENIA, path, nombre, path);
+
+               return myXML.InnerXml;
+           */
             //armar xml
-            getXML();
-            
-            //firmar xml por certificado
-            var nombre = fac_num.Trim() + ".xml";
-            v_rootxml = v_rootxml + @"\" + nombre;
-
-            XmlDocument myXML = FirmaDocumento.FirmarDocumento(Constants.URL_CERTIFICADO, Constants.URL_CERTIFICADO_CONTRASENIA, path, nombre,  path);
-
-            return myXML.InnerXml;
-
+            return getXML();
         }
 
 
         //Convertir XML a DataSet
-        private bool XmlToDataSet( string XMLInvoice, string XMLDetailInvoce)
+        private bool XmlToDataSet(string XMLInvoice, string XMLDetailInvoce)
         {
             try
             {
-                      
+
                 //Convieriendo XMl a DataSet Factura
                 System.IO.StringReader rdinvoice = new System.IO.StringReader(XMLInvoice);
                 dstinvoicexml.ReadXml(rdinvoice);
@@ -74,17 +73,17 @@ namespace FELFactura
         {
 
             LlenarEstructuras.DatosGenerales(dstinvoicexml, datosGenerales);
-            LlenarEstructuras.DatosEmisor(dstinvoicexml,  emisor);
-            LlenarEstructuras.DatosReceptor( dstinvoicexml,  receptor, datosGenerales);
+            LlenarEstructuras.DatosEmisor(dstinvoicexml, emisor);
+            LlenarEstructuras.DatosReceptor(dstinvoicexml, receptor, datosGenerales);
             LlenarEstructuras.DatosItems(dstdetailinvoicexml, items);
-            LlenarEstructuras.Totales(dstinvoicexml, totales,items);
+            LlenarEstructuras.Totales(dstinvoicexml, totales, items);
         }
 
-       
 
 
 
-           private String getXML()
+
+        private String getXML()
         {
             XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.1.0");
             XNamespace xd = XNamespace.Get("http://www.w3.org/2000/09/xmldsig#");
@@ -110,13 +109,13 @@ namespace FELFactura
 
             //datos generales
             XElement DatosGenerales = new XElement(dte + "DatosGenerales", new XAttribute("CodigoMoneda", this.datosGenerales.CodigoMoneda),
-                 new XAttribute("FechaHoraEmision", this.datosGenerales.FechaHoraEmision),new XAttribute("NumeroAcceso", this.datosGenerales.NumeroAcceso), new XAttribute("Tipo", this.datosGenerales.Tipo));
+                 new XAttribute("FechaHoraEmision", this.datosGenerales.FechaHoraEmision), new XAttribute("NumeroAcceso", this.datosGenerales.NumeroAcceso), new XAttribute("Tipo", this.datosGenerales.Tipo));
             DatosEmision.Add(DatosGenerales);
 
             //datos emisor
             XElement Emisor = new XElement(dte + "Emisor", new XAttribute("AfiliacionIVA", this.emisor.AfiliacionIVA),
-                new XAttribute("CodigoEstablecimiento", this.emisor.CodigoEstablecimiento), 
-                new XAttribute("CorreoEmisor", this.emisor.CorreoEmisor), new XAttribute("NITEmisor", this.emisor.NITEmisor), 
+                new XAttribute("CodigoEstablecimiento", this.emisor.CodigoEstablecimiento),
+                new XAttribute("CorreoEmisor", this.emisor.CorreoEmisor), new XAttribute("NITEmisor", this.emisor.NITEmisor),
                 new XAttribute("NombreComercial", this.emisor.NombreComercial), new XAttribute("NombreEmisor", this.emisor.NombreEmisor));
             DatosEmision.Add(Emisor);
             //direccion del emisor
@@ -135,7 +134,7 @@ namespace FELFactura
             DireccionEmisor.Add(Pais);
 
             //datos Receptor
-            XElement Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", this.receptor.CorreoReceptor), 
+            XElement Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", this.receptor.CorreoReceptor),
                 new XAttribute("IDReceptor", this.receptor.IDReceptor),
                 new XAttribute("NombreReceptor", this.receptor.NombreReceptor));
             DatosEmision.Add(Receptor);
@@ -166,8 +165,10 @@ namespace FELFactura
 
             XElement Items = new XElement(dte + "Items");
             DatosEmision.Add(Items);
-            if (this.items!=null) {
-                foreach (Item item in this.items) {
+            if (this.items != null)
+            {
+                foreach (Item item in this.items)
+                {
                     //Items
 
 
@@ -196,13 +197,15 @@ namespace FELFactura
 
 
                     //impuesto por item
-                 if (item.impuestos != null) {
-                        foreach (Impuesto im in item.impuestos) {
+                    if (item.impuestos != null)
+                    {
+                        foreach (Impuesto im in item.impuestos)
+                        {
                             XElement Impuesto = new XElement(dte + "Impuesto");
                             XElement NombreCorto = new XElement(dte + "NombreCorto", im.NombreCorto);
                             XElement CodigoUnidadGravable = new XElement(dte + "CodigoUnidadGravable", im.CodigoUnidadGravable);
                             XElement MontoGravable = new XElement(dte + "MontoGravable", im.MontoGravable);
-                          //  XElement CantidadUnidadesGravables = new XElement(dte + "CantidadUnidadesGravables", im.CantidadUnidadesGravables);
+                            //  XElement CantidadUnidadesGravables = new XElement(dte + "CantidadUnidadesGravables", im.CantidadUnidadesGravables);
                             XElement MontoImpuesto = new XElement(dte + "MontoImpuesto", im.MontoImpuesto);
                             Impuesto.Add(NombreCorto);
                             Impuesto.Add(CodigoUnidadGravable);
@@ -210,9 +213,9 @@ namespace FELFactura
                             //Impuesto.Add(CantidadUnidadesGravables);
                             Impuesto.Add(MontoImpuesto);
                             Impuestos.Add(Impuesto);
-                        }                    
-                 }
-               }
+                        }
+                    }
+                }
             }
             //Totales
             XElement Totales = new XElement(dte + "Totales");
@@ -234,12 +237,12 @@ namespace FELFactura
             String res = myXML.ToString();
 
 
-            try
+          /*  try
             {
                 v_rootxml = string.Format(@"{0}\{1}.xml", v_rootxml, fac_num.Trim());
                 if (!File.Exists(v_rootxml))
                 {
-                    
+
                     myXML.Save(v_rootxml);
                 }
                 else
@@ -252,8 +255,8 @@ namespace FELFactura
             {
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" + "docelec.txt";
                 System.IO.File.WriteAllText(path, ex.Message);
-            }
+            }*/
             return res;
         }
-        }
+    }
 }

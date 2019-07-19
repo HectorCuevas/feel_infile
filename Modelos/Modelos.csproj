@@ -42,12 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Anular.cs" />
+    <Compile Include="Certificacion.cs" />
+    <Compile Include="ControlEmision.cs" />
     <Compile Include="Emisor.cs" />
     <Compile Include="DatosGenerales.cs" />
     <Compile Include="Impuesto.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receptor.cs" />
+    <Compile Include="RespuestaCertificacion.cs" />
+    <Compile Include="RespuestaSolitud.cs" />
     <Compile Include="Solicitud.cs" />
     <Compile Include="Totales.cs" />
     <Compile Include="TotalImpuestos.cs" />

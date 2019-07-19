@@ -33,11 +33,6 @@ namespace FELFactura
             XmlDocument xmlDoc2 = new XmlDocument();
             xmlDoc2.LoadXml(responseString);
             return xmlDoc2;
-
-        
-
-
-
         }
 
         private DataSet GetResponseXML(string respuesta, bool errores)

@@ -22,7 +22,7 @@ namespace FELFactura
         DataSet strreponsexml = new DataSet();
 
         [WebMethod]
-        public DataSet registerDocument(String token, String XMLInvoice, String XMLDetailInvoce, String path, String fac_num)
+        public DataSet registerDocumentAsync(String token, String XMLInvoice, String XMLDetailInvoce, String path, String fac_num)
         {
             try {
 
@@ -49,10 +49,10 @@ namespace FELFactura
                     String xmlDoc = xml.getXML( XMLInvoice, XMLDetailInvoce,path,fac_num);
 
                     /** Nueva ruta para infile **/
-                    SolitudFirma envio = new SolitudFirma();
-                    envio.hacerAsync(xmlDoc);
+                     //SolitudFirma.envioSolitudAsync(xmlDoc);
 
-                   //SE ENVIA EL XML PARA EL WS DE VALIDACION
+
+                    //SE ENVIA EL XML PARA EL WS DE VALIDACION
                     XmlDocument validate = wsvalidate.validar(token, xmlDoc);
 
                     // SE VERIFICA EL RESULTADO DE LA RESPUESTA
@@ -71,7 +71,7 @@ namespace FELFactura
                     XmlDocument register = ws.registerDte(token, xmlDoc);
 
                     //SE VALIDA RESPUESTA DEL SERVICIO
-                    XmlNodeList resReg = register.GetElementsByTagName("tipo_respuesta");
+                    XmlNodeList resReg = register.GetElementsByTagName("tipo_respuesta");   
                     string errorRes = resReg[0].InnerXml;
 
                     // SI EL SERVICIO RETORNA ERROR SE ARMA LA ESTRUCTURA PARA RESPONDER LOS ERRORES A PROFIT

@@ -289,11 +289,16 @@ C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\roslyn\VBCSCo
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\Firma.dll
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\Modelos.dll
+C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\Newtonsoft.Json.dll
+C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\System.Net.Http.Extensions.dll
+C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\System.Net.Http.Formatting.dll
+C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\System.Net.Http.Primitives.dll
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\FirmaXadesNet.dll
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\Microsoft.Xades.dll
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\BouncyCastle.Crypto.dll
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\Firma.pdb
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\Modelos.pdb
+C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\Newtonsoft.Json.xml
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\BouncyCastle.Crypto.pdb
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\obj\Debug\FELFactura.csprojAssemblyReference.cache
@@ -301,8 +306,3 @@ C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\obj\Debug\FELFact
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\obj\Debug\FELFactura.csproj.CopyComplete
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\obj\Debug\FELFactura.dll
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\obj\Debug\FELFactura.pdb
-C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\Newtonsoft.Json.dll
-C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\System.Net.Http.Extensions.dll
-C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\System.Net.Http.Primitives.dll
-C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\Newtonsoft.Json.xml
-C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FELFactura\bin\System.Net.Http.Formatting.dll
