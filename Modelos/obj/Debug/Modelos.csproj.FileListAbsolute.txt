@@ -26,3 +26,14 @@ C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\Modelos\bin\Debug\Modelos.pd
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\Modelos\obj\Debug\Modelos.csproj.CoreCompileInputs.cache
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\Modelos\obj\Debug\Modelos.dll
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\Modelos\obj\Debug\Modelos.pdb
+C:\Users\Norman\Desktop\rest\FELFactura\Modelos\bin\Debug\Modelos.dll
+C:\Users\Norman\Desktop\rest\FELFactura\Modelos\bin\Debug\Modelos.pdb
+C:\Users\Norman\Desktop\rest\FELFactura\Modelos\obj\Debug\Modelos.csproj.CoreCompileInputs.cache
+C:\Users\Norman\Desktop\rest\FELFactura\Modelos\obj\Debug\Modelos.dll
+C:\Users\Norman\Desktop\rest\FELFactura\Modelos\obj\Debug\Modelos.pdb
+C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\bin\Debug\Modelos.dll
+C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\bin\Debug\Modelos.pdb
+C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Debug\Modelos.csproj.CoreCompileInputs.cache
+C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Debug\Modelos.dll
+C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Debug\Modelos.pdb
+C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Debug\Modelos.csprojAssemblyReference.cache

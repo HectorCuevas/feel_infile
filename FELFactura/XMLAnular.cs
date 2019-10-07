@@ -8,7 +8,6 @@ using System.Xml.Linq;
 using System.IO;
 using System.Data;
 using Modelos;
-using Firma;
 namespace FELFactura
 {
     public class XMLAnular
@@ -28,16 +27,16 @@ namespace FELFactura
             ReaderDataset();
 
             //armar xml
-            getXML();
+          
 
-            //firmar xml por certificado
+            //firmar xml por certificado 
             var nombre = fac_num.Trim() + ".xml";
-            v_rootxml = v_rootxml + @"\" + nombre;
+            v_rootxml = v_rootxml + @"\C:\Data\"; //+ nombre;
 
-            XmlDocument myXML = FirmaDocumento.FirmarDocumentoAnulacion(Constants.URL_CERTIFICADO, Constants.URL_CERTIFICADO_CONTRASENIA, path, nombre, path);
+            //XmlDocument myXML = FirmaDocumento.FirmarDocumentoAnulacion(Constants.URL_CERTIFICADO, Constants.URL_CERTIFICADO_CONTRASENIA, path, nombre, path);
 
-            String data =getPostData(myXML.InnerXml);
-            return data ;
+            //String data =getPostData(myXML.InnerXml);
+            return getXML();
 
         }
 
@@ -88,13 +87,14 @@ namespace FELFactura
         {
             XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.1.0");
             XNamespace xd = XNamespace.Get("http://www.w3.org/2000/09/xmldsig#");
+          //  XNamespace 
             //Encabezado del Documento
             XDeclaration declaracion = new XDeclaration("1.0", "utf-8", "no");
 
             //GTDocumento
             XElement parameters = new XElement(dte + "GTAnulacionDocumento",
-                            new XAttribute(XNamespace.Xmlns + "ns", dte.NamespaceName),
-                           new XAttribute(XNamespace.Xmlns + "xd", xd.NamespaceName),
+                            new XAttribute(XNamespace.Xmlns + "dte", dte.NamespaceName),
+                           new XAttribute(XNamespace.Xmlns + "ds", xd.NamespaceName),
                            new XAttribute("Version", "0.1"));
             //SAT
             XElement SAT = new XElement(dte + "SAT");
@@ -119,27 +119,6 @@ namespace FELFactura
 
             XDocument myXML = new XDocument(declaracion, parameters);
             String res = myXML.ToString();
-
-
-            try
-            {
-                v_rootxml = string.Format(@"{0}\{1}.xml", v_rootxml, fac_num.Trim());
-                if (!File.Exists(v_rootxml))
-                {
-
-                    myXML.Save(v_rootxml);
-                }
-                else
-                {
-                    System.IO.File.Delete(v_rootxml);
-                    myXML.Save(v_rootxml);
-                }
-            }
-            catch (Exception ex)
-            {
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" + "docelec.txt";
-                System.IO.File.WriteAllText(path, ex.Message);
-            }
             return res;
         }
 

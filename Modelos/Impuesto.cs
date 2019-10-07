@@ -12,8 +12,6 @@ namespace Modelos
         public string CodigoUnidadGravable = null;
         public string MontoGravable = null;
         public string CantidadUnidadesGravables = null;
-        public string MontoImpuesto = null;
-        
-        
+        public string MontoImpuesto = null;    
     }
 }

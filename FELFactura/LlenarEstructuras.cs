@@ -10,12 +10,29 @@ namespace FELFactura
 {
     public class LlenarEstructuras
     {
+       public static String fecha = "2017-12-12";
 
         public static void DatosGenerales(DataSet dstcompanyxml, DatosGenerales datosGenerales)
         {
 
             foreach (DataRow reader in dstcompanyxml.Tables[0].Rows)
             {
+                //var vendedor = reader["vendedor"];
+                //if (vendedor != null)
+                //{
+                //    Constants.VENDEDOR = vendedor.ToString();
+
+                //}
+
+                //var pago = reader["condicionpago"];
+                //if (pago != null)
+                //{
+                //    Constants.PAGO = pago.ToString();
+
+                //}
+
+               ///////////////////////////////////
+
                 var CodigoMoneda = reader["codigomoneda"];
                 if (CodigoMoneda != null)
                 {
@@ -27,23 +44,31 @@ namespace FELFactura
                 if (NumeroAcceso != null)
                 {
                     datosGenerales.NumeroAcceso = NumeroAcceso.ToString();
+                    Constants.NUMERO_ACCESO = datosGenerales.NumeroAcceso;
 
                 }
                 var FechaHoraEmision = reader["FechaHoraEmision"];
                 if (FechaHoraEmision != null)
                 {
-                    datosGenerales.FechaHoraEmision =FechaHoraEmision.ToString();
+                    datosGenerales.FechaHoraEmision = FechaHoraEmision.ToString();
+                    //fecha = FechaHoraEmision.ToString();
 
                 }
+                
+                var tipo = reader["tipo"];
+                if (tipo != null)
+                {
+                    // datosGenerales.FechaHoraEmision = FechaHoraEmision.ToString();
+                    Constants.TIPO_DOC = tipo.ToString();
+                    datosGenerales.Tipo = tipo.ToString();
 
-
-                datosGenerales.Tipo = Constants.TIPO_FACTURA;
-
-
-
-
+                }
+                var identificador = reader["identificadorunico"];
+                if (identificador != null)
+                {
+                    Constants.IDENTIFICADOR_DTE = identificador.ToString();
+                }               
             }
-
         }
 
         public static void Totales(DataSet dstcompanyxml, Totales totales,List<Item>lst)
@@ -110,6 +135,9 @@ namespace FELFactura
                 {
                     emisor.CorreoEmisor = CorreoEmisor.ToString();
 
+                }
+                else {
+                    emisor.CorreoEmisor = "";
                 }
 
                 var NITEmisor = reader["nitemisor"];
@@ -190,6 +218,7 @@ namespace FELFactura
                 if (NombreReceptor != null)
                 {
                     receptor.NombreReceptor = NombreReceptor.ToString();
+                    Constants.RECEPTOR = NombreReceptor.ToString();
 
                 }
 
@@ -351,11 +380,109 @@ namespace FELFactura
                 anular.FechaHoraAnulacion = FechaHoraAnulacion.ToString();
                 anular.MotivoAnulacion = MotivoAnulacion.ToString();
                 anular.uuid = uuid.ToString();
+                Constants.TIPO_DOC = "ANU";
+                string[] numero = NumeroDocumentoAAnular.ToString().Split('-');
+                Constants.NUMERO_ACCESO = numero[0];
 
             }
 
         }
 
+        public static void DatosNotaCredito(DataSet dstcancelxml, NotaCredito nota) {
 
+            foreach (DataRow reader in dstcancelxml.Tables[0].Rows) {
+
+                //var nombreComplemento = reader["NombreComplemento"];
+                var FechaEmisionDocumentoOrigen = reader["FechaEmisionDocumentoOrigen"];
+                var motivoAjuste = reader["MotivoAjuste"];
+                var NumeroAutorizacionDocumentoOrigen = reader["NumeroAutorizacionDocumentoOrigen"];
+                var SerieDocumentoOrigen = reader["SerieDocumentoOrigen"];
+                var NumeroDocumentoOrigen = reader["NumeroDocumentoOrigen"];
+                var tipoNCRE = reader["Tipo_FE"];
+
+                if (tipoNCRE.ToString() == "GFACE")
+                {
+                    Constants.isNCREGFACE = true;
+                }
+                else {
+                    Constants.isNCREGFACE = false;
+                }
+
+                nota.NumeroAutorizacionDocumentoOrigen = NumeroAutorizacionDocumentoOrigen.ToString();
+                nota.SerieDocumentoOrigen = SerieDocumentoOrigen.ToString();
+                nota.FechaEmisionDocumentoOrigen = FechaEmisionDocumentoOrigen.ToString();
+                nota.nombreComplemento = "ncomp";
+                nota.MotivoAjuste = motivoAjuste.ToString();
+                nota.IDComplemento = "text";
+                nota.NumeroDocumentoOrigen = NumeroDocumentoOrigen.ToString();
+            }
+        }
+
+        public static void DatosFacturaEspecial(DataSet dstcancelxml, Retenciones retenciones)
+        {
+
+            foreach (DataRow reader in dstcancelxml.Tables[0].Rows)
+            {
+                var RetencionISR = reader["RetencionISR"];
+                var RetencionIVA = reader["RetencionIVA"];
+                var TotalMenosRetenciones = reader["TotalMenosRetenciones"];
+
+                retenciones.RetencionISR = RetencionISR.ToString();
+                retenciones.RetencionIVA = RetencionIVA.ToString();
+                retenciones.TotalMenosRetenciones = TotalMenosRetenciones.ToString();
+
+
+            }
+        }
+        public static void DatosFacturaCambiaria(DataSet dsEnc ,DataSet dstcancelxml, Abonos abonos) {
+
+            foreach (DataRow reader in dsEnc.Tables[0].Rows)
+            {
+                var FechaHoraVencimiento = reader["FechaVencimiento"];
+                if (FechaHoraVencimiento != null)
+                {
+                    fecha = FechaHoraVencimiento.ToString();
+                    DateTime oDate = Convert.ToDateTime(fecha);
+                    abonos.FechaVencimiento = formatDate(oDate);
+                    // abonos.FechaVencimiento = fec
+                    abonos.MontoAbono = "0";
+                    abonos.numeroAbono = "1";
+
+                }
+               
+            }
+
+        }
+        public static void DatosFactExportacion(DataSet dstinvoicexml, Complementos c)
+        {
+            foreach (DataRow reader in dstinvoicexml.Tables[0].Rows)
+            {
+
+                var INCOTERM = reader["transporte"];
+                if (INCOTERM != null)
+                {
+                    c.transporte = INCOTERM.ToString();
+                }
+            }
+        }
+        public static String formatDate(DateTime oDate) {
+            String mes= "", dia = "", newDate = "";
+            if (oDate.Month <= 9)
+            {
+                mes = "0" + oDate.Month.ToString();
+            }
+            else {
+                mes = oDate.Month.ToString();
+            }
+            if (oDate.Day <= 9)
+            {
+                dia = "0" + oDate.Day.ToString();
+            }
+            else {
+                dia =oDate.Day.ToString();
+            }
+            newDate = oDate.Year + "-" + mes + "-" + dia;
+            return newDate;
+        }
     }
 }

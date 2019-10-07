@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelos
 {
-    class RespuestaCertificacion
+    public class RespuestaCertificacion
     {
         public String resultado { get; set; }
         public String fecha { get; set; }
@@ -18,7 +18,7 @@ namespace Modelos
         public bool alertas_sat { get; set; }
         public List<object> descripcion_alertas_sat { get; set; }
         public int cantidad_errores { get; set; }
-        public List<object> descripcion_errores { get; set; }
+        public List<DescripcionErrores> descripcion_errores { get; set; }
         public string informacion_adicional { get; set; }
         public string uuid { get; set; }
         public string serie { get; set; }

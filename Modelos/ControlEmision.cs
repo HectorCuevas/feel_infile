@@ -8,7 +8,7 @@ namespace Modelos
 {
     public class ControlEmision
     {
-        public int Saldo { get; set; }
-        public int Creditos { get; set; }
+        public String Saldo { get; set; }
+        public String Creditos { get; set; }
     }
 }

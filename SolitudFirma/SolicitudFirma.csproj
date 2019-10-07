@@ -37,9 +37,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="fel">
-      <HintPath>..\fel\bin\Debug\fel.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -82,10 +79,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FirmaDocumento\Firma\Firma.csproj">
-      <Project>{15f30543-0c6c-4a0d-9f05-f6ef8e81c68c}</Project>
-      <Name>Firma</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FELFactura\FELFactura.csproj">
       <Project>{fbc2748d-0502-450e-8754-18fa67cdf4c5}</Project>
       <Name>FELFactura</Name>

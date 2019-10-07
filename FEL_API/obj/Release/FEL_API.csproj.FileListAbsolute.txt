@@ -105,3 +105,6 @@ C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FEL_API\obj\Release\FEL_API.
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FEL_API\obj\Release\FEL_API.csproj.CopyComplete
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FEL_API\obj\Release\FEL_API.dll
 C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FEL_API\obj\Release\FEL_API.pdb
+C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FEL_API\bin\fel.dll
+C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FEL_API\bin\fel.pdb
+C:\Users\Norman\Desktop\Prosisco\fel\FEL\FELFactura\FEL_API\bin\fel.dll.config

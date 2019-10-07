@@ -5,7 +5,6 @@ using System.Xml.Linq;
 using System.IO;
 using System.Data;
 using Modelos;
-using Firma;
 
 namespace FELFactura
 {
@@ -37,9 +36,9 @@ namespace FELFactura
             var nombre = fac_num.Trim() + ".xml";
             v_rootxml = v_rootxml + @"\" + nombre;
 
-            XmlDocument myXML = FirmaDocumento.FirmarDocumento(Constants.URL_CERTIFICADO, Constants.URL_CERTIFICADO_CONTRASENIA, path, nombre, path);
+            //  XmlDocument myXML = FirmaDocumento.FirmarDocumento(Constants.URL_CERTIFICADO, Constants.URL_CERTIFICADO_CONTRASENIA, path, nombre, path);
 
-            return myXML.InnerXml;
+            return getXML(); 
 
         }
 
