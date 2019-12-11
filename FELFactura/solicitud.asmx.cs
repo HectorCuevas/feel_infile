@@ -392,7 +392,10 @@ namespace FELFactura
                             dt.Rows.Add(dr);
                             dsError.Tables.Add(dt);
                             respuesta = dsError;
-                            respuesta = certificacion(respuestaSolitud.archivo, xmlGenerado);
+                            if (respuestaSolitud.resultado == "true") {
+                                respuesta = certificacion(respuestaSolitud.archivo, xmlGenerado);
+                            }
+                            
                         }
                         catch (JsonReaderException ex)
                         {

@@ -209,14 +209,26 @@ namespace FELFactura
             DireccionReceptor.Add(DepartamentoReceptor);
             DireccionReceptor.Add(PaisReceptor);
 
-
+            XElement Frases = null;
             if (Constants.TIPO_DOC == "FACT" || Constants.TIPO_DOC == "FCAM")
             {
-                //frases
-                XElement Frases = new XElement(dte + "Frases");
-                DatosEmision.Add(Frases);
-                XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", Constants.FRASE_CODIGO_1), new XAttribute("TipoFrase", Constants.FRASE_1));
-                Frases.Add(Frase1);
+                if (Constants.EXENTA)
+                {
+                    //frases
+                    Frases = new XElement(dte + "Frases");
+                    DatosEmision.Add(Frases);
+                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "1"));
+                    Frases.Add(Frase1);
+                }
+                else
+                {
+                    //frases
+                    Frases = new XElement(dte + "Frases");
+                    DatosEmision.Add(Frases);
+                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", Constants.FRASE_CODIGO_1), new XAttribute("TipoFrase", Constants.FRASE_1));
+                    Frases.Add(Frase1);
+                }
+
 
             }
             //XElement Frase2 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", Constants.FRASE_CODIGO_2), new XAttribute("TipoFrase", Constants.FRASE_2));
@@ -277,6 +289,12 @@ namespace FELFactura
                         }
                     }
                 }
+            }
+            if (Constants.EXENTA && Constants.TIPO_DOC == "FACT")
+            {
+                XElement Frase3 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "10"), new XAttribute("TipoFrase", "4"));
+                Frases.Add(Frase3);
+
             }
             //Totales
             XElement Totales = new XElement(dte + "Totales");

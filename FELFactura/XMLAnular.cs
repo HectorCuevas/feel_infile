@@ -30,8 +30,8 @@ namespace FELFactura
           
 
             //firmar xml por certificado 
-            var nombre = fac_num.Trim() + ".xml";
-            v_rootxml = v_rootxml + @"\C:\Data\"; //+ nombre;
+            //var nombre = fac_num.Trim() + ".xml";
+            //v_rootxml = v_rootxml + @"\C:\Data\"; //+ nombre;
 
             //XmlDocument myXML = FirmaDocumento.FirmarDocumentoAnulacion(Constants.URL_CERTIFICADO, Constants.URL_CERTIFICADO_CONTRASENIA, path, nombre, path);
 

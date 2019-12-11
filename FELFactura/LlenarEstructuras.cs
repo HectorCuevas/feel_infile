@@ -253,6 +253,15 @@ namespace FELFactura
 
                 }
 
+                var exento = reader["exenta"];
+                if (exento != null)
+                {       
+                    if (exento.ToString() == "SI") {
+                        Constants.EXENTA = true;
+                    }
+                    
+                }
+
             }
 
         }
