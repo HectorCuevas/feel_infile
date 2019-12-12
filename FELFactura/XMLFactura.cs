@@ -34,12 +34,6 @@ namespace FELFactura
             TipoDocumento tipoDocumento = new TipoDocumento();
             tipoDocumento.getTipo(dstinvoicexml);
             ReaderDataset();
-            //if (Constants.TIPO_EXPO == "SI" && (Constants.TIPO_DOC == "FACT" || Constants.TIPO_DOC == "FCAM"))
-            //{
-            //    XMLFacturaExportacion xMLFacturaExportacion = new XMLFacturaExportacion();
-            //    xml = xMLFacturaExportacion.getXML(XMLInvoice, XMLDetailInvoce, path, fac_num);
-            //}
-            //else 
             if (Constants.TIPO_DOC == "NABN")
             {
                 XMLNotasAbono xMLNotasAbono = new XMLNotasAbono();
