@@ -144,7 +144,15 @@ namespace FELFactura
 
                 {
 
-                    Constants.RETENEDOR = true;
+                    if (retieneiva.ToString() == "SI")
+
+                    {
+
+                        Constants.RETENEDOR = true;
+
+                    }
+
+
 
                 }
             }
