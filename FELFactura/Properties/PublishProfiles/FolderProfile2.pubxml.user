@@ -6,11 +6,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\Norman\Desktop\WebServices\feel_infile_ws</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Norman\Desktop\webservices\lemans</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="AnnularDocumentWS.asmx">
-      <publishTime>06/04/2019 14:43:22</publishTime>
+      <publishTime>12/30/2019 16:04:23</publishTime>
     </File>
     <File Include="bin/BouncyCastle.Crypto.dll">
       <publishTime>06/04/2019 14:43:30</publishTime>
@@ -19,10 +19,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/04/2019 14:43:30</publishTime>
     </File>
     <File Include="bin/FELFactura.dll">
-      <publishTime>12/20/2019 12:03:04</publishTime>
+      <publishTime>01/01/2020 23:16:53</publishTime>
     </File>
     <File Include="bin/FELFactura.pdb">
-      <publishTime>12/20/2019 12:03:04</publishTime>
+      <publishTime>01/01/2020 23:16:53</publishTime>
     </File>
     <File Include="bin/Firma.dll">
       <publishTime>07/24/2019 13:36:23</publishTime>
@@ -34,166 +34,166 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/04/2019 14:43:31</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
-      <publishTime>06/04/2019 14:43:24</publishTime>
+      <publishTime>12/30/2019 16:04:30</publishTime>
     </File>
     <File Include="bin/Microsoft.Xades.dll">
       <publishTime>06/04/2019 14:43:31</publishTime>
     </File>
     <File Include="bin/Modelos.dll">
-      <publishTime>12/19/2019 15:29:49</publishTime>
+      <publishTime>12/30/2019 16:04:25</publishTime>
     </File>
     <File Include="bin/Modelos.pdb">
-      <publishTime>12/19/2019 15:29:49</publishTime>
+      <publishTime>12/30/2019 16:04:25</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>04/22/2019 01:06:16</publishTime>
+      <publishTime>12/30/2019 16:04:33</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe.config">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/csc.rsp">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe.config">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/csi.rsp">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:30</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:30</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:30</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.AppContext.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Console.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Compression.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Pipes.AccessControl.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Pipes.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.AccessControl.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Claims.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Principal.Windows.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.ValueTuple.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe.config">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.rsp">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
-      <publishTime>06/04/2019 14:43:26</publishTime>
+      <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Extensions.dll">
-      <publishTime>07/24/2015 14:15:58</publishTime>
+      <publishTime>12/30/2019 16:04:33</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>07/24/2015 14:15:58</publishTime>
+      <publishTime>12/30/2019 16:04:33</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Primitives.dll">
-      <publishTime>07/24/2015 14:15:58</publishTime>
+      <publishTime>12/30/2019 16:04:33</publishTime>
     </File>
     <File Include="RegisterDocumentWS.asmx">
       <publishTime>04/06/2019 14:43:22</publishTime>
@@ -202,10 +202,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/06/2019 14:43:22</publishTime>
     </File>
     <File Include="solicitud.asmx">
-      <publishTime>07/17/2019 16:10:56</publishTime>
+      <publishTime>12/30/2019 16:04:25</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/19/2019 15:30:28</publishTime>
+      <publishTime>01/01/2020 23:16:58</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -49,6 +49,7 @@ namespace FELFactura
         public static String TIPO_EXPO = "";
         public static bool isNCREGFACE = false;
         public static bool EXENTA = false;
+        public static bool RETENEDOR = false;
         #endregion
 
         #region Rutas Megaprint

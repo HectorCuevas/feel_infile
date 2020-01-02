@@ -31,7 +31,7 @@ namespace FELFactura
 
                 //}
 
-               ///////////////////////////////////
+                ///////////////////////////////////
 
                 var CodigoMoneda = reader["codigomoneda"];
                 if (CodigoMoneda != null)
@@ -54,7 +54,7 @@ namespace FELFactura
                     //fecha = FechaHoraEmision.ToString();
 
                 }
-                
+
                 var tipo = reader["tipo"];
                 if (tipo != null)
                 {
@@ -67,7 +67,17 @@ namespace FELFactura
                 if (identificador != null)
                 {
                     Constants.IDENTIFICADOR_DTE = identificador.ToString();
-                }               
+                }
+
+                var retieneiva = reader["retieneiva"];
+                if (retieneiva != null)              
+                {
+                    if (retieneiva.ToString() == "SI")
+                    {
+                        Constants.RETENEDOR = true;
+                    }
+                    
+                }
             }
         }
 
