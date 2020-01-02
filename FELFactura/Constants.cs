@@ -70,6 +70,8 @@ namespace FELFactura
         public const String URL_ANULACION_DTE = "https://certificador.feel.com.gt/";
         public const String METODO_ANULACION_DTE = "fel/anulacion/dte";
         public static bool isEXP = false;
+        public static bool EXENTA = false;
+        public static bool RETENEDOR = false;
 
 
         #endregion
