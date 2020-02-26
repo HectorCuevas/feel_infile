@@ -184,10 +184,25 @@ namespace FELFactura
             DireccionEmisor.Add(Pais);
 
             //datos Receptor
-            XElement Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
-                new XAttribute("IDReceptor", receptor.IDReceptor),
-                new XAttribute("NombreReceptor", receptor.NombreReceptor));
-            DatosEmision.Add(Receptor);
+            XElement Receptor = null;
+            if (Constants.TIPO_DOC == "FESP")
+            {
+                 Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
+               new XAttribute("IDReceptor", receptor.IDReceptor),
+               new XAttribute("NombreReceptor", receptor.NombreReceptor),
+               new XAttribute("TipoEspecial", retenciones.TipoEspecial));
+                DatosEmision.Add(Receptor);
+            }
+            else
+            {
+                 Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
+                  new XAttribute("IDReceptor", receptor.IDReceptor),
+                  new XAttribute("NombreReceptor", receptor.NombreReceptor));
+                DatosEmision.Add(Receptor);
+
+            }
+
+           
             //direccion del receptor
             XElement DireccionReceptor = new XElement(dte + "DireccionReceptor");
             Receptor.Add(DireccionReceptor);
