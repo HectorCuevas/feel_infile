@@ -26,3 +26,8 @@ C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Release\Modelos.csprojAssembly
 C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Release\Modelos.csproj.CoreCompileInputs.cache
 C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Release\Modelos.dll
 C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Release\Modelos.pdb
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\Modelos\bin\Release\Modelos.dll
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\Modelos\bin\Release\Modelos.pdb
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\Modelos\obj\Release\Modelos.csprojAssemblyReference.cache
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\Modelos\obj\Release\Modelos.dll
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\Modelos\obj\Release\Modelos.pdb

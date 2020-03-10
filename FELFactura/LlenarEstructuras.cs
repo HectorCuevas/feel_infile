@@ -891,6 +891,7 @@ namespace FELFactura
 
                 var TotalMenosRetenciones = reader["TotalMenosRetenciones"];
 
+                var TipoEspecial = reader["TipoEspecial"];
 
 
                 retenciones.RetencionISR = RetencionISR.ToString();
@@ -898,6 +899,8 @@ namespace FELFactura
                 retenciones.RetencionIVA = RetencionIVA.ToString();
 
                 retenciones.TotalMenosRetenciones = TotalMenosRetenciones.ToString();
+
+                retenciones.TipoEspecial = TipoEspecial.ToString();
 
 
 
