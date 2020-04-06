@@ -48,7 +48,20 @@ namespace FELFactura
         public static String VENDEDOR = "";
         public static String TIPO_EXPO = "";
         public static bool isNCREGFACE = false;
+<<<<<<< HEAD
         public static bool EXENTA = false;
+=======
+
+
+        /** Anulaciones infile ***/
+        public const String URL_ANULACION_DTE = "https://certificador.feel.com.gt/";
+        public const String METODO_ANULACION_DTE = "fel/anulacion/dte";
+        public static bool isEXP = false;
+        public static bool EXENTA = false;
+        public static bool RETENEDOR = false;
+
+
+>>>>>>> bfe42fe638162634e848b00d3b0b05d08cc0f1bd
         #endregion
 
         #region Rutas Megaprint

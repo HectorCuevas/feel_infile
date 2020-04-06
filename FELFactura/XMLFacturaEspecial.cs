@@ -158,7 +158,7 @@ namespace FELFactura
             //XElement Frase2 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", Constants.FRASE_CODIGO_2), new XAttribute("TipoFrase", Constants.FRASE_2));
             //Frases.Add(Frase2);
 
-            // detalle de factura 
+            // detalle de factura   
 
             XElement Items = new XElement(dte + "Items");
             DatosEmision.Add(Items);

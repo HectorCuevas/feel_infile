@@ -6,7 +6,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
+<<<<<<< HEAD
     <_PublishTargetUrl>C:\Users\Norman\Desktop\webservices\thermoplastica</_PublishTargetUrl>
+=======
+    <_PublishTargetUrl>C:\Users\Norman\Desktop\webservices\epidauro</_PublishTargetUrl>
+>>>>>>> bfe42fe638162634e848b00d3b0b05d08cc0f1bd
   </PropertyGroup>
   <ItemGroup>
     <File Include="AnnularDocumentWS.asmx">
@@ -19,10 +23,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/04/2019 14:43:30</publishTime>
     </File>
     <File Include="bin/FELFactura.dll">
+<<<<<<< HEAD
       <publishTime>03/12/2020 16:32:54</publishTime>
     </File>
     <File Include="bin/FELFactura.pdb">
       <publishTime>03/12/2020 16:32:54</publishTime>
+=======
+      <publishTime>02/26/2020 14:57:34</publishTime>
+    </File>
+    <File Include="bin/FELFactura.pdb">
+      <publishTime>02/26/2020 14:57:34</publishTime>
+>>>>>>> bfe42fe638162634e848b00d3b0b05d08cc0f1bd
     </File>
     <File Include="bin/Firma.dll">
       <publishTime>07/24/2019 13:36:23</publishTime>
@@ -40,6 +51,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/04/2019 14:43:31</publishTime>
     </File>
     <File Include="bin/Modelos.dll">
+<<<<<<< HEAD
       <publishTime>03/12/2020 16:18:12</publishTime>
     </File>
     <File Include="bin/Modelos.pdb">
@@ -47,6 +59,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>03/12/2020 16:18:13</publishTime>
+=======
+      <publishTime>02/26/2020 14:57:31</publishTime>
+    </File>
+    <File Include="bin/Modelos.pdb">
+      <publishTime>02/26/2020 14:57:31</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>12/30/2019 16:04:33</publishTime>
+>>>>>>> bfe42fe638162634e848b00d3b0b05d08cc0f1bd
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>12/30/2019 16:04:31</publishTime>
@@ -187,6 +208,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/30/2019 16:04:31</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Extensions.dll">
+<<<<<<< HEAD
       <publishTime>03/12/2020 16:18:13</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
@@ -194,6 +216,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/System.Net.Http.Primitives.dll">
       <publishTime>03/12/2020 16:18:13</publishTime>
+=======
+      <publishTime>12/30/2019 16:04:33</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>12/30/2019 16:04:33</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Primitives.dll">
+      <publishTime>12/30/2019 16:04:33</publishTime>
+>>>>>>> bfe42fe638162634e848b00d3b0b05d08cc0f1bd
     </File>
     <File Include="RegisterDocumentWS.asmx">
       <publishTime>04/06/2019 14:43:22</publishTime>
@@ -205,7 +236,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/30/2019 16:04:25</publishTime>
     </File>
     <File Include="Web.config">
+<<<<<<< HEAD
       <publishTime>03/12/2020 16:18:12</publishTime>
+=======
+      <publishTime>02/26/2020 12:45:28</publishTime>
+>>>>>>> bfe42fe638162634e848b00d3b0b05d08cc0f1bd
     </File>
   </ItemGroup>
 </Project>

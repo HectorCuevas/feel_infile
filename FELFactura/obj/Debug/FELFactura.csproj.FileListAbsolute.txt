@@ -432,9 +432,12 @@ C:\Users\Norman\Desktop\Bk\FELFactura\FELFactura\obj\Debug\FELFactura.csproj.Cor
 C:\Users\Norman\Desktop\Bk\FELFactura\FELFactura\obj\Debug\FELFactura.csproj.CopyComplete
 C:\Users\Norman\Desktop\Bk\FELFactura\FELFactura\obj\Debug\FELFactura.dll
 C:\Users\Norman\Desktop\Bk\FELFactura\FELFactura\obj\Debug\FELFactura.pdb
+<<<<<<< HEAD
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\obj\Debug\FELFactura.csprojAssemblyReference.cache
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\obj\Debug\FELFactura.dll
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\obj\Debug\FELFactura.pdb
+=======
+>>>>>>> bfe42fe638162634e848b00d3b0b05d08cc0f1bd
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\bin\FELFactura.dll.config
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\bin\FELFactura.dll
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\bin\FELFactura.pdb
@@ -493,4 +496,11 @@ C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\bin\System.Net.Http.Prim
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\bin\Modelos.pdb
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\bin\Newtonsoft.Json.xml
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+<<<<<<< HEAD
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\obj\Debug\FELFactura.csproj.CopyComplete
+=======
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\obj\Debug\FELFactura.csprojAssemblyReference.cache
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\obj\Debug\FELFactura.csproj.CopyComplete
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\obj\Debug\FELFactura.dll
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FELFactura\obj\Debug\FELFactura.pdb
+>>>>>>> bfe42fe638162634e848b00d3b0b05d08cc0f1bd
