@@ -234,7 +234,7 @@ namespace FELFactura
                     //frases
                     Frases = new XElement(dte + "Frases");
                     DatosEmision.Add(Frases);
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "2"), new XAttribute("TipoFrase", "1"));
+                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "1"));
                     Frases.Add(Frase1);
                 }
             }

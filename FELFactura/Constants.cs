@@ -34,13 +34,13 @@ namespace FELFactura
         public const String URL_SOLICITUD_FIRMA = "https://signer-emisores.feel.com.gt/";
         public const String METODO_SOLICITUD_FIRMA = "sign_solicitud_firmas/firma_xml";
 
-        //PARA EPIDAURO
+
         public static String ALIAS = ConfigurationManager.AppSettings["USUARIO"].ToString();
         public static String ES_ANULACION = "N";
         public static String LLAVE_TOKEN = ConfigurationManager.AppSettings["LLAVE_TOKEN"].ToString();
         public static String NIT_EMISOR = ConfigurationManager.AppSettings["NIT_EMISOR"].ToString();
         public static String CORREO_COPIA = ConfigurationManager.AppSettings["CORREO"].ToString();
-        //
+        
         public static String HEADER_USUARIO_TOKEN = ConfigurationManager.AppSettings["USUARIO"].ToString();
         public static String HEADER_LLAVE_EMISOR = ConfigurationManager.AppSettings["LLAVE_EMISOR"].ToString();
         public const String HEADER_IDENTIFICADOR_TOKEN = "NDEBEXC2";
