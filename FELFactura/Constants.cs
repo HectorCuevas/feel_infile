@@ -10,6 +10,10 @@ namespace FELFactura
     {
         #region Rutas INFILE
 
+
+        public static string URL_CERTIFICACION_XML = "https://certificador.feel.com.gt/fel/procesounificado/transaccion/v2/xml";
+
+
         //IDENTIFICADOR PARA LA SOLICITUD DE DOCUMENTOS
         public static String IDENTIFICADOR_DTE = "";
 
