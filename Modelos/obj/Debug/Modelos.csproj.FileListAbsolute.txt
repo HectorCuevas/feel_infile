@@ -37,3 +37,8 @@ C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Debug\Modelos.csproj.CoreCompi
 C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Debug\Modelos.dll
 C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Debug\Modelos.pdb
 C:\Users\Norman\Desktop\Bk\FELFactura\Modelos\obj\Debug\Modelos.csprojAssemblyReference.cache
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\Modelos\bin\Debug\Modelos.dll
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\Modelos\bin\Debug\Modelos.pdb
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\Modelos\obj\Debug\Modelos.dll
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\Modelos\obj\Debug\Modelos.pdb
+C:\Users\Norman\Desktop\EPIDAURO\feel_infile\Modelos\obj\Debug\Modelos.csprojAssemblyReference.cache

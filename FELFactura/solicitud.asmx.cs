@@ -47,7 +47,7 @@ namespace FELFactura
                 }
 
                 //saveJSon("", "C:\\FACTURAS_JSON\\archivo.txt");
-                ds = MainWS(xmlDoc, num_fac);
+                ds = certificacion(xmlDoc, num_fac);
             }
             catch (DirectoryNotFoundException ex)
             {
@@ -330,34 +330,39 @@ namespace FELFactura
         #region Funciones Certificacion
         private static DataSet certificacion(String xml, String xmlGenerado)
         {
-            Certificacion certificacion = new Certificacion();
+          /*  Certificacion certificacion = new Certificacion();
             certificacion.nit_emisor = Constants.NIT_EMISOR;
             certificacion.correo_copia = Constants.CORREO_COPIA;
-            certificacion.xml_dte = xml;
+            certificacion.xml_dte = xml;*/
             DataSet dataSet = new DataSet();
             DataSet dsError = new DataSet();
             //pasar a json el objeto
-            string json = JsonConvert.SerializeObject(certificacion);
+            //string json = JsonConvert.SerializeObject(certificacion);
 
             RespuestaCertificacion respuesta = new RespuestaCertificacion();
             String d = "";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(Constants.URL_CERTIFICACION_XML);
-                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, Constants.METODO_CERTIFICACION_DTE);
-                request.Headers.Add(Constants.HEADER_USUARIO, Constants.HEADER_USUARIO_TOKEN);
-                request.Headers.Add(Constants.HEADER_LLAVE, Constants.HEADER_LLAVE_EMISOR);
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, Constants.METODO_CERTIFICACION_XML);
+                request.Headers.Add("UsuarioFirma", Constants.HEADER_USUARIO_TOKEN);
+                request.Headers.Add("LlaveFirma", Constants.LLAVE_TOKEN);
+                request.Headers.Add("UsuarioApi", Constants.HEADER_USUARIO_TOKEN);
+                request.Headers.Add("LlaveApi", Constants.HEADER_LLAVE_EMISOR);
+                request.Headers.Add("identificador", Constants.IDENTIFICADOR_DTE);
+                //request.Headers.Add("Content-Type", Constants.HEADER_LLAVE_EMISOR);
                 request.Headers.Add(Constants.HEADER_IDENTIFICADOR, Constants.IDENTIFICADOR_DTE);
-                request.Content = new StringContent(xml, Encoding.UTF8, "text/xml");
+                request.Content = new StringContent(xml, Encoding.UTF8, "application/xml");
 
                 using (HttpResponseMessage response = client.SendAsync(request).Result)
                 {
                     using (HttpContent content = response.Content)
                     {
+                        string str = "";
+                        str = content.ReadAsStringAsync().Result.ToString();
+                        respuesta = JsonConvert.DeserializeObject<RespuestaCertificacion>(str);
 
-                        respuesta = JsonConvert.DeserializeObject<RespuestaCertificacion>(content.ReadAsStringAsync().Result);
-
-
+                     //   string str =content.ReadAsStringAsync().Result.ToString();
                         try
                         {
 
@@ -377,7 +382,7 @@ namespace FELFactura
                             //dt.Columns.Add(new DataColumn("informacion_adicional", typeof(string)));
                             dt.Columns.Add(new DataColumn("uuid", typeof(string)));
                             dt.Columns.Add(new DataColumn("serie", typeof(string)));
-                            dt.Columns.Add(new DataColumn("numero", typeof(long)));
+                            dt.Columns.Add(new DataColumn("numero", typeof(string)));
                             dt.Columns.Add(new DataColumn("xml_certificado", typeof(string)));
                             dt.Columns.Add(new DataColumn("xmlGenerado", typeof(string)));
 
@@ -403,7 +408,7 @@ namespace FELFactura
                             dr["serie"] = respuesta.serie;
                             // dr["numero"] = respuesta.serie;
                             dr["xml_certificado"] = respuesta.xml_certificado;
-                            dr["xmlGenerado"] = xmlGenerado;
+                            dr["xmlGenerado"] = xml;
 
                             dt.Rows.Add(dr);
                             dataSet.Tables.Add(dt);
