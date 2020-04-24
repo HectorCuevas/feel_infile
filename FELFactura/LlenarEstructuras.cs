@@ -84,6 +84,13 @@ namespace FELFactura
 
                 }
 
+                var totalImp = reader["TotalMontoImpuesto"];
+                if (totalImp != null)
+                {
+                    totales.TotalMontoImpuesto = totalImp.ToString();
+
+                }
+
             }
 
             if (lst != null)
@@ -108,7 +115,7 @@ namespace FELFactura
             }
 
 
-            totales.TotalMontoImpuesto = impuetos.ToString();
+          //  totales.TotalMontoImpuesto = totalImp.ToString();
             totales.NombreCorto = "IVA";
 
         }
