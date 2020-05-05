@@ -50,6 +50,7 @@
     <Compile Include="DescripcionErrores.cs" />
     <Compile Include="Emisor.cs" />
     <Compile Include="DatosGenerales.cs" />
+    <Compile Include="Frases.cs" />
     <Compile Include="Impuesto.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="NotaCredito.cs" />

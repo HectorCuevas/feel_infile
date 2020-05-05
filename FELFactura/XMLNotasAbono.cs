@@ -11,26 +11,28 @@ using Modelos;
 
 namespace FELFactura
 {
-    public class XMLNotasAbono : IDocumentRegister
+    public class XMLNotasAbono 
     {
 
         private DataSet dstinvoicexml = new DataSet();
         private DataSet dstdetailinvoicexml = new DataSet();
+        private DataSet dsFrases = new DataSet();
         private DatosGenerales datosGenerales = new DatosGenerales();
         private Emisor emisor = new Emisor();
         private NotaCredito nota = new NotaCredito();
+        private Frases frases = new Frases();
         private Receptor receptor = new Receptor();
         private List<Item> items = new List<Item>();
         private Totales totales = new Totales();
         string v_rootxml = "";
         string fac_num = "";
-        public String getXML(string XMLInvoice, string XMLDetailInvoce, string path, string fac_num)
+        public String getXML(string XMLInvoice, string XMLDetailInvoce, string xmlFrases, string path, string fac_num)
         {
 
             v_rootxml = path;
             this.fac_num = fac_num;
             //convertir a dataset los string para mayor manupulacion
-            XmlToDataSet(XMLInvoice, XMLDetailInvoce);
+            XmlToDataSet(XMLInvoice, XMLDetailInvoce, xmlFrases);
             //llenar estructuras
             ReaderDataset();
 
@@ -41,7 +43,7 @@ namespace FELFactura
 
 
         //Convertir XML a DataSet
-        private bool XmlToDataSet(string XMLInvoice, string XMLDetailInvoce)
+        private bool XmlToDataSet(string XMLInvoice, string XMLDetailInvoce, string xmlFrases)
         {
             try
             {
@@ -53,6 +55,10 @@ namespace FELFactura
                 //Convieritiendo XML a DataSet Detalle Factura
                 System.IO.StringReader rddetailinvoice = new System.IO.StringReader(XMLDetailInvoce);
                 dstdetailinvoicexml.ReadXml(rddetailinvoice);
+
+
+                System.IO.StringReader rdFrases = new System.IO.StringReader(xmlFrases);
+                dsFrases.ReadXml(rdFrases);
                 return true;
             }
             catch (Exception ex)
@@ -69,6 +75,7 @@ namespace FELFactura
 
             LlenarEstructuras.DatosGenerales(dstinvoicexml, datosGenerales);
             LlenarEstructuras.DatosEmisor(dstinvoicexml, emisor);
+            LlenarEstructuras.Frases(dsFrases, frases);
             LlenarEstructuras.DatosReceptor(dstinvoicexml, receptor, datosGenerales);
             LlenarEstructuras.DatosItems(dstdetailinvoicexml, items);
             LlenarEstructuras.Totales(dstinvoicexml, totales, items);

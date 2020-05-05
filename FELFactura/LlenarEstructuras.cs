@@ -1,38 +1,19 @@
-﻿using System;
+﻿using Modelos;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.IO;
 using System.Data;
-using Modelos;
 
 namespace FELFactura
 {
     public class LlenarEstructuras
     {
-       public static String fecha = "2017-12-12";
+        public static String fecha = "2017-12-12";
 
         public static void DatosGenerales(DataSet dstcompanyxml, DatosGenerales datosGenerales)
         {
 
             foreach (DataRow reader in dstcompanyxml.Tables[0].Rows)
             {
-                //var vendedor = reader["vendedor"];
-                //if (vendedor != null)
-                //{
-                //    Constants.VENDEDOR = vendedor.ToString();
-
-                //}
-
-                //var pago = reader["condicionpago"];
-                //if (pago != null)
-                //{
-                //    Constants.PAGO = pago.ToString();
-
-                //}
-
-               ///////////////////////////////////
-
                 var CodigoMoneda = reader["codigomoneda"];
                 if (CodigoMoneda != null)
                 {
@@ -54,7 +35,7 @@ namespace FELFactura
                     //fecha = FechaHoraEmision.ToString();
 
                 }
-                
+
                 var tipo = reader["tipo"];
                 if (tipo != null)
                 {
@@ -67,11 +48,26 @@ namespace FELFactura
                 if (identificador != null)
                 {
                     Constants.IDENTIFICADOR_DTE = identificador.ToString();
-                }               
+                }
             }
         }
-
-        public static void Totales(DataSet dstcompanyxml, Totales totales,List<Item>lst)
+        public static void Frases(DataSet xmlFrases, Frases frases)
+        {
+            foreach (DataRow reader in xmlFrases.Tables[0].Rows)
+            {
+                var codigoEscenario = reader["codigoescenario"];
+                if (codigoEscenario != null)
+                {
+                    frases.codigoescenario = codigoEscenario.ToString();
+                }
+                var tipofrase = reader["tipofrase"];
+                if (tipofrase != null)
+                {
+                    frases.tipofrase = tipofrase.ToString();
+                }
+            }
+        }
+        public static void Totales(DataSet dstcompanyxml, Totales totales, List<Item> lst)
         {
 
             Double impuetos = 0d;
@@ -80,7 +76,7 @@ namespace FELFactura
                 var GranTotal = reader["grantotal"];
                 if (GranTotal != null)
                 {
-                    totales.GranTotal =  GranTotal.ToString();
+                    totales.GranTotal = GranTotal.ToString();
 
                 }
 
@@ -136,7 +132,8 @@ namespace FELFactura
                     emisor.CorreoEmisor = CorreoEmisor.ToString();
 
                 }
-                else {
+                else
+                {
                     emisor.CorreoEmisor = "";
                 }
 
@@ -196,12 +193,12 @@ namespace FELFactura
 
         }
 
-        public static void DatosReceptor(DataSet dstinvoicexml, Receptor receptor,DatosGenerales datosGenerales)
+        public static void DatosReceptor(DataSet dstinvoicexml, Receptor receptor, DatosGenerales datosGenerales)
         {
             foreach (DataRow reader in dstinvoicexml.Tables[0].Rows)
             {
 
-               
+
                 var CorreoReceptor = reader["correoreceptor"];
                 if (CorreoReceptor != null)
                 {
@@ -255,11 +252,12 @@ namespace FELFactura
 
                 var exento = reader["exenta"];
                 if (exento != null)
-                {       
-                    if (exento.ToString() == "SI") {
+                {
+                    if (exento.ToString() == "SI")
+                    {
                         Constants.EXENTA = true;
                     }
-                    
+
                 }
 
             }
@@ -286,19 +284,19 @@ namespace FELFactura
                     impuesto.CodigoUnidadGravable = codigounidadgravable.ToString();
 
                 }
-           
+
                 var montoimpuesto = reader["montoimpuesto"];
                 if (montoimpuesto != null)
                 {
 
 
                     impuesto.MontoImpuesto = montoimpuesto.ToString();
-                    
+
                 }
                 var montogravable = reader["montogravable"];
                 if (montogravable != null)
                 {
-                    impuesto.MontoGravable =  montogravable.ToString();
+                    impuesto.MontoGravable = montogravable.ToString();
 
                 }
                 //item en general
@@ -335,27 +333,27 @@ namespace FELFactura
                 var precio = reader["precio"];
                 if (precio != null)
                 {
-                    item.Precio =  precio.ToString();
+                    item.Precio = precio.ToString();
 
                 }
                 var preciounitario = reader["preciounitario"];
                 if (preciounitario != null)
                 {
-                    item.PrecioUnitario =  preciounitario.ToString();
+                    item.PrecioUnitario = preciounitario.ToString();
 
                 }
 
                 var total = reader["total"];
                 if (total != null)
                 {
-                    item.Total =  total.ToString();
+                    item.Total = total.ToString();
 
                 }
 
                 var descuento = reader["descuento"];
-                if (descuento != null )
+                if (descuento != null)
                 {
-                    if (Double.Parse(descuento.ToString())>0d)
+                    if (Double.Parse(descuento.ToString()) > 0d)
                     {
                         item.Descuento = descuento.ToString();
 
@@ -397,9 +395,11 @@ namespace FELFactura
 
         }
 
-        public static void DatosNotaCredito(DataSet dstcancelxml, NotaCredito nota) {
+        public static void DatosNotaCredito(DataSet dstcancelxml, NotaCredito nota)
+        {
 
-            foreach (DataRow reader in dstcancelxml.Tables[0].Rows) {
+            foreach (DataRow reader in dstcancelxml.Tables[0].Rows)
+            {
 
                 //var nombreComplemento = reader["NombreComplemento"];
                 var FechaEmisionDocumentoOrigen = reader["FechaEmisionDocumentoOrigen"];
@@ -413,7 +413,8 @@ namespace FELFactura
                 {
                     Constants.isNCREGFACE = true;
                 }
-                else {
+                else
+                {
                     Constants.isNCREGFACE = false;
                 }
 
@@ -445,7 +446,8 @@ namespace FELFactura
 
             }
         }
-        public static void DatosFacturaCambiaria(DataSet dsEnc ,DataSet dstcancelxml, Abonos abonos) {
+        public static void DatosFacturaCambiaria(DataSet dsEnc, DataSet dstcancelxml, Abonos abonos)
+        {
 
             foreach (DataRow reader in dsEnc.Tables[0].Rows)
             {
@@ -460,7 +462,7 @@ namespace FELFactura
                     abonos.numeroAbono = "1";
 
                 }
-               
+
             }
 
         }
@@ -476,21 +478,24 @@ namespace FELFactura
                 }
             }
         }
-        public static String formatDate(DateTime oDate) {
-            String mes= "", dia = "", newDate = "";
+        public static String formatDate(DateTime oDate)
+        {
+            String mes = "", dia = "", newDate = "";
             if (oDate.Month <= 9)
             {
                 mes = "0" + oDate.Month.ToString();
             }
-            else {
+            else
+            {
                 mes = oDate.Month.ToString();
             }
             if (oDate.Day <= 9)
             {
                 dia = "0" + oDate.Day.ToString();
             }
-            else {
-                dia =oDate.Day.ToString();
+            else
+            {
+                dia = oDate.Day.ToString();
             }
             newDate = oDate.Year + "-" + mes + "-" + dia;
             return newDate;

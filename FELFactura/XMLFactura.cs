@@ -12,10 +12,12 @@ namespace FELFactura
         bool isFCAM = false, isNCRE = false, isNDEB = false;
         private DataSet dstinvoicexml = new DataSet();
         private DataSet dstdetailinvoicexml = new DataSet();
+        private DataSet dsFrases = new DataSet();
         private DatosGenerales datosGenerales = new DatosGenerales();
         private Emisor emisor = new Emisor();
         private Receptor receptor = new Receptor();
         private List<Item> items = new List<Item>();
+        private Frases frases = new Frases();
         private Totales totales = new Totales();
         private Complementos complementos = new Complementos();
         private Abonos abonos = new Abonos();
@@ -23,13 +25,13 @@ namespace FELFactura
         private Retenciones retenciones = new Retenciones();
         string v_rootxml = "";
         string fac_num = "";
-        public String getXML(string XMLInvoice, string XMLDetailInvoce, string path, string fac_num)
+        public String getXML(string XMLInvoice, string XMLDetailInvoce, string xmlFrases,string path, string fac_num)
         {
             String xml = "";
             v_rootxml = path;
             this.fac_num = fac_num;
             //convertir a dataset los string para mayor manupulacion
-            XmlToDataSet(XMLInvoice, XMLDetailInvoce);
+            XmlToDataSet(XMLInvoice, XMLDetailInvoce, xmlFrases);
             //llenar estructuras
             TipoDocumento tipoDocumento = new TipoDocumento();
             tipoDocumento.getTipo(dstinvoicexml);
@@ -37,7 +39,7 @@ namespace FELFactura
             if (Constants.TIPO_DOC == "NABN")
             {
                 XMLNotasAbono xMLNotasAbono = new XMLNotasAbono();
-                xml = xMLNotasAbono.getXML(XMLInvoice, XMLDetailInvoce, "123546", fac_num);
+                xml = xMLNotasAbono.getXML(XMLInvoice, XMLDetailInvoce, xmlFrases, "123546", fac_num);
             }
             else
             if (Constants.TIPO_DOC == "FCAM" || Constants.TIPO_DOC == "FACT")
@@ -63,7 +65,7 @@ namespace FELFactura
 
 
         //Convertir XML a DataSet
-        private bool XmlToDataSet(string XMLInvoice, string XMLDetailInvoce)
+        private bool XmlToDataSet(string XMLInvoice, string XMLDetailInvoce, string xmlFrases)
         {
             try
             {
@@ -75,6 +77,9 @@ namespace FELFactura
                 //Convieritiendo XML a DataSet Detalle Factura
                 System.IO.StringReader rddetailinvoice = new System.IO.StringReader(XMLDetailInvoce);
                 dstdetailinvoicexml.ReadXml(rddetailinvoice);
+
+                System.IO.StringReader rdFrases = new System.IO.StringReader(xmlFrases);
+                dsFrases.ReadXml(rdFrases);
                 return true;
             }
             catch (Exception ex)
@@ -89,6 +94,7 @@ namespace FELFactura
         {
 
             LlenarEstructuras.DatosGenerales(dstinvoicexml, datosGenerales);
+            LlenarEstructuras.Frases(dsFrases, frases);
             LlenarEstructuras.DatosEmisor(dstinvoicexml, emisor);
             LlenarEstructuras.DatosReceptor(dstinvoicexml, receptor, datosGenerales);
             LlenarEstructuras.DatosItems(dstdetailinvoicexml, items);
@@ -226,7 +232,7 @@ namespace FELFactura
                     //frases
                     Frases = new XElement(dte + "Frases");
                     DatosEmision.Add(Frases);
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "2"), new XAttribute("TipoFrase", "1"));
+                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", frases.codigoescenario), new XAttribute("TipoFrase", frases.tipofrase));
                     Frases.Add(Frase1);
                 }
                 else
@@ -234,7 +240,7 @@ namespace FELFactura
                     //frases
                     Frases = new XElement(dte + "Frases");
                     DatosEmision.Add(Frases);
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "2"), new XAttribute("TipoFrase", "1"));
+                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", frases.codigoescenario), new XAttribute("TipoFrase", frases.tipofrase));
                     Frases.Add(Frase1);
                 }
             }
