@@ -221,22 +221,22 @@ namespace FELFactura
             XElement Frases = null;
             if (Constants.TIPO_DOC == "FACT" || Constants.TIPO_DOC == "FCAM")
             {
-                if (Constants.EXENTA)
+               /* if (Constants.EXENTA)
                 {
                     //frases
                     Frases = new XElement(dte + "Frases");
                     DatosEmision.Add(Frases);
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "2"), new XAttribute("TipoFrase", "1"));
+                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "10"), new XAttribute("TipoFrase", "4"));
                     Frases.Add(Frase1);
                 }
                 else
-                {
+                {*/
                     //frases
                     Frases = new XElement(dte + "Frases");
                     DatosEmision.Add(Frases);
                     XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "1"));
                     Frases.Add(Frase1);
-                }
+                //}
             }
 
             // detalle de factura 

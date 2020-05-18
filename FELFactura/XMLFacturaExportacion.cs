@@ -78,7 +78,7 @@ namespace FELFactura
         private String getXML()
         {
             Boolean exenta = false;
-            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.1.0");
+            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.2.0");
             XNamespace xd = XNamespace.Get("http://www.w3.org/2000/09/xmldsig#");
             XNamespace ns = XNamespace.Get("http://www.sat.gob.gt/face2/ComplementoExportaciones/0.1.0");
             XNamespace xsi = XNamespace.Get("http://www.w3.org/2001/XMLSchema-instance");
@@ -92,7 +92,7 @@ namespace FELFactura
             XElement parameters = new XElement(dte + "GTDocumento",
                             new XAttribute(XNamespace.Xmlns + "dte", dte.NamespaceName),
                            new XAttribute(XNamespace.Xmlns + "xd", xd.NamespaceName),
-                           new XAttribute("Version", "0.4"));
+                           new XAttribute("Version", "0.1"));
             //SAT
             XElement SAT = new XElement(dte + "SAT", new XAttribute("ClaseDocumento", "dte"));
             parameters.Add(SAT);
@@ -294,8 +294,8 @@ namespace FELFactura
             XElement CodigoComprador = new XElement(cex + "CodigoComprador", receptor.IDReceptor);
             XElement OtraReferencia = new XElement(cex + "OtraReferencia","NO HAY");
             XElement INCOTERM = new XElement(cex + "INCOTERM", complementos.transporte);
-            XElement NombreExportador = new XElement(cex + "NombreExportador", "EPIDAURO, S.A.");
-            XElement CodigoExportador = new XElement(cex + "CodigoExportador", "E23556");
+            XElement NombreExportador = new XElement(cex + "NombreExportador", "THERMOPLASTICA, SOCIEDAD ANONIMA");
+            XElement CodigoExportador = new XElement(cex + "CodigoExportador", "T14827");
             Exportacion.Add(NombreConsignatarioODestinatario);
             Exportacion.Add(DireccionConsignatarioODestinatario);
             Exportacion.Add(CodigoConsignatarioODestinatario);

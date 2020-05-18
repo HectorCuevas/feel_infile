@@ -85,7 +85,7 @@ namespace FELFactura
 
         private String getXML()
         {
-            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.1.0");
+            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.2.0");
             XNamespace xd = XNamespace.Get("http://www.w3.org/2000/09/xmldsig#");
           //  XNamespace 
             //Encabezado del Documento
