@@ -263,7 +263,7 @@ namespace FELFactura
 
         {
 
-            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.1.0");
+            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.2.0");
 
             XNamespace cfc = XNamespace.Get("http://www.sat.gob.gt/dte/fel/CompCambiaria/0.1.0");
 
@@ -287,7 +287,7 @@ namespace FELFactura
 
                            new XAttribute(XNamespace.Xmlns + "xd", xd.NamespaceName),
 
-                           new XAttribute("Version", "0.4"));
+                           new XAttribute("Version", "0.1"));
 
             //SAT
 
