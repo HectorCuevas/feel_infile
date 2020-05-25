@@ -129,7 +129,7 @@ namespace FELFactura
 
         private String getXML()
         {
-            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.1.0");
+            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.2.0");
             XNamespace cfc = XNamespace.Get("http://www.sat.gob.gt/dte/fel/CompCambiaria/0.1.0");
             XNamespace cno = XNamespace.Get("http://www.sat.gob.gt/face2/ComplementoReferenciaNota/0.1.0");
             XNamespace xd = XNamespace.Get("http://www.w3.org/2000/09/xmldsig#");
@@ -141,7 +141,7 @@ namespace FELFactura
             XElement parameters = new XElement(dte + "GTDocumento",
                             new XAttribute(XNamespace.Xmlns + "dte", dte.NamespaceName),
                            new XAttribute(XNamespace.Xmlns + "xd", xd.NamespaceName),
-                           new XAttribute("Version", "0.4"));
+                           new XAttribute("Version", "0.1"));
             //SAT
             XElement SAT = new XElement(dte + "SAT", new XAttribute("ClaseDocumento", "dte"));
             parameters.Add(SAT);
@@ -226,7 +226,7 @@ namespace FELFactura
                     //frases
                     Frases = new XElement(dte + "Frases");
                     DatosEmision.Add(Frases);
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "2"), new XAttribute("TipoFrase", "1"));
+                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "1"));
                     Frases.Add(Frase1);
                 }
                 else
@@ -234,7 +234,7 @@ namespace FELFactura
                     //frases
                     Frases = new XElement(dte + "Frases");
                     DatosEmision.Add(Frases);
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "2"), new XAttribute("TipoFrase", "1"));
+                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "1"));
                     Frases.Add(Frase1);
                 }
             }
