@@ -95,7 +95,7 @@ namespace FELFactura
             XElement parameters = new XElement(dte + "GTAnulacionDocumento",
                             new XAttribute(XNamespace.Xmlns + "dte", dte.NamespaceName),
                            new XAttribute(XNamespace.Xmlns + "ds", xd.NamespaceName),
-                           new XAttribute("Version", "0.4"));
+                           new XAttribute("Version", "0.1"));
             //SAT
             XElement SAT = new XElement(dte + "SAT");
             parameters.Add(SAT);
