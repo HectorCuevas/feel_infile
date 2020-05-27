@@ -27,7 +27,7 @@ namespace FELFactura
 
         /** Anulaciones infile ***/
         public const String URL_ANULACION_DTE = "https://certificador.feel.com.gt/";
-        public const String METODO_ANULACION_DTE = "fel/anulacion/dte";
+        public const String METODO_ANULACION_DTE = "fel/anulacion/v2/dte";
         public static bool isEXP = false;
 
 
