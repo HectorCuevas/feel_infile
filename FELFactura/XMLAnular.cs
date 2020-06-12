@@ -85,7 +85,7 @@ namespace FELFactura
 
         private String getXML()
         {
-            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.2.0");
+            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.1.0");
             XNamespace xd = XNamespace.Get("http://www.w3.org/2000/09/xmldsig#");
           //  XNamespace 
             //Encabezado del Documento
@@ -95,7 +95,7 @@ namespace FELFactura
             XElement parameters = new XElement(dte + "GTAnulacionDocumento",
                             new XAttribute(XNamespace.Xmlns + "dte", dte.NamespaceName),
                            new XAttribute(XNamespace.Xmlns + "ds", xd.NamespaceName),
-                           new XAttribute("Version", "0.1"));
+                           new XAttribute("Version", "0.4"));
             //SAT
             XElement SAT = new XElement(dte + "SAT");
             parameters.Add(SAT);
