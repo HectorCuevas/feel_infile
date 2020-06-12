@@ -189,7 +189,7 @@ namespace FELFactura
 
             //Complementos
 
-            XElement Complementos = new XElement(dte + "Complementos");
+          /*  XElement Complementos = new XElement(dte + "Complementos");
             DatosEmision.Add(Complementos);
 
             XElement Complemento = new XElement(dte + "Complemento",
@@ -207,7 +207,7 @@ namespace FELFactura
                 , new XAttribute("Version", "0")
 
                 );
-            Complemento.Add(Referencias);
+            Complemento.Add(Referencias);*/
 
             XDocument myXML = new XDocument(declaracion, parameters);
             String res = myXML.ToString();
