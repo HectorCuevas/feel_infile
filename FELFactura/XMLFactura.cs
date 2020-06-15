@@ -424,7 +424,7 @@ namespace FELFactura
                         Complemento.Add(Referencias);
                     }
                     break;
-                case "NABN":
+               /* case "NABN":
 
                     {
                         XElement Complementos = new XElement(dte + "Complementos");
@@ -446,8 +446,8 @@ namespace FELFactura
 
                             );
                         Complemento.Add(Referencias);
-                    }
-                    break;
+                    "}
+                    break;*/
                 case "FESP":
                     {
                         XElement Complementos = new XElement(dte + "Complementos");
