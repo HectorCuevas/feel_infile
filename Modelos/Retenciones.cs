@@ -11,6 +11,7 @@ namespace Modelos
         public String RetencionIVA { get; set; }
         public String RetencionISR { get; set; }
         public String TotalMenosRetenciones { get; set; }
+        public String TipoEspecial { get; set; }
     }
 }
 

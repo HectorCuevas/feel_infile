@@ -445,11 +445,12 @@ namespace FELFactura
                 var RetencionISR = reader["RetencionISR"];
                 var RetencionIVA = reader["RetencionIVA"];
                 var TotalMenosRetenciones = reader["TotalMenosRetenciones"];
+                var TipoEspecial = reader["TipoEspecial"];
 
                 retenciones.RetencionISR = RetencionISR.ToString();
                 retenciones.RetencionIVA = RetencionIVA.ToString();
                 retenciones.TotalMenosRetenciones = TotalMenosRetenciones.ToString();
-
+                retenciones.TipoEspecial = TipoEspecial.ToString();
 
             }
         }
