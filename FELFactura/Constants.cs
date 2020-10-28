@@ -11,12 +11,13 @@ namespace FELFactura
         #region Rutas INFILE
 
 
-        public static string URL_CERTIFICACION_XML = "https://certificador.feel.com.gt/fel/procesounificado/transaccion/v2/xml";
+       // public static string URL_CERTIFICACION_XML = "https://certificador.feel.com.gt/fel/procesounificado/transaccion/v2/xml";
 
 
+       // https://certificador.feel.com.gt/fel/procesounificado/transaccion/v2/xml
         //IDENTIFICADOR PARA LA SOLICITUD DE DOCUMENTOS
         public static String IDENTIFICADOR_DTE = "";
-
+       // https://certificador.feel.com.gt/fel/certificacion/v2/dte
         /*** Certificacion INFILE ***/
         public const String URL_CERTIFICACION_DTE = "https://certificador.feel.com.gt/";
         public const String METODO_CERTIFICACION_DTE = "fel/certificacion/v2/dte";
