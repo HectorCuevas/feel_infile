@@ -34,7 +34,7 @@ namespace FELFactura
             {
                 XMLFactura xml = new XMLFactura();
 
-                xmlDoc = xml.getXML(xml_enc, xml_det, "ashdashd", num_fac);
+                xmlDoc = xml.getXML(xml_enc, xml_det, "t", num_fac);
                 //bool hayInternet = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
                 XmlDocument doc = new XmlDocument();
                 doc.PreserveWhitespace = true;

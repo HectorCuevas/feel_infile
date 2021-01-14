@@ -11,6 +11,10 @@ namespace Modelos
         public  string GranTotal = "0";
         public string NombreCorto = null;
         public string TotalMontoImpuesto = null;
+
+        public string NombreCortoInguat = null;
+        public string TotalMontoImpuestoInguat = null;
+
         public  List<TotalImpuestos> TotalImpuestos;
     }
 }

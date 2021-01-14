@@ -240,7 +240,7 @@ namespace FELFactura
             }
 
             // detalle de factura 
-
+            bool esInguat = false;
             XElement Items = new XElement(dte + "Items");
             DatosEmision.Add(Items);
             if (items != null)
@@ -283,14 +283,30 @@ namespace FELFactura
                             XElement NombreCorto = new XElement(dte + "NombreCorto", im.NombreCorto);
                             XElement CodigoUnidadGravable = new XElement(dte + "CodigoUnidadGravable", im.CodigoUnidadGravable);
                             XElement MontoGravable = new XElement(dte + "MontoGravable", im.MontoGravable);
-                            //  XElement CantidadUnidadesGravables = new XElement(dte + "CantidadUnidadesGravables", im.CantidadUnidadesGravables);
                             XElement MontoImpuesto = new XElement(dte + "MontoImpuesto", im.MontoImpuesto);
+
                             Impuesto.Add(NombreCorto);
                             Impuesto.Add(CodigoUnidadGravable);
                             Impuesto.Add(MontoGravable);
-                            //Impuesto.Add(CantidadUnidadesGravables);
                             Impuesto.Add(MontoImpuesto);
                             Impuestos.Add(Impuesto);
+
+                            if(im.NombreCortoImp != "NA")
+                            {
+                                XElement ImpuestoImp = new XElement(dte + "Impuesto");
+                                XElement NombreCortoImp = new XElement(dte + "NombreCorto", im.NombreCortoImp);
+                                XElement CodigoUnidadGravableImp = new XElement(dte + "CodigoUnidadGravable", "1");
+                                XElement MontoGravableImp = new XElement(dte + "MontoGravable", im.MontoGravableImp);
+                                XElement MontoImpuestoImp = new XElement(dte + "MontoImpuesto", im.MontoImpuestoImp);
+                                ImpuestoImp.Add(NombreCortoImp);
+                                ImpuestoImp.Add(CodigoUnidadGravableImp);
+                                ImpuestoImp.Add(MontoGravableImp);
+                                ImpuestoImp.Add(MontoImpuestoImp);
+                                Impuestos.Add(ImpuestoImp);
+                                esInguat = true;
+
+                            }
+
                         }
                     }
                 }
@@ -309,6 +325,14 @@ namespace FELFactura
             XElement TotalImpuestos = new XElement(dte + "TotalImpuestos");
             XElement TotalImpuesto = new XElement(dte + "TotalImpuesto", new XAttribute("NombreCorto", totales.NombreCorto), new XAttribute("TotalMontoImpuesto", totales.TotalMontoImpuesto));
             TotalImpuestos.Add(TotalImpuesto);
+
+
+            if (Double.Parse(totales.TotalMontoImpuestoInguat) > 0)
+            {
+                XElement TotalImpuestoInguat = new XElement(dte + "TotalImpuesto", new XAttribute("NombreCorto", totales.NombreCortoInguat), new XAttribute("TotalMontoImpuesto", totales.TotalMontoImpuestoInguat));
+                TotalImpuestos.Add(TotalImpuestoInguat); 
+            }
+
             Totales.Add(TotalImpuestos);
 
             //total general

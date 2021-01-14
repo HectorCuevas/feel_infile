@@ -11,9 +11,11 @@ namespace FELFactura
     public class LlenarEstructuras
     {
        public static String fecha = "2017-12-12";
-
+       public static string totalInguat = "";
         public static void DatosGenerales(DataSet dstcompanyxml, DatosGenerales datosGenerales)
         {
+
+           
 
             foreach (DataRow reader in dstcompanyxml.Tables[0].Rows)
             {
@@ -67,7 +69,13 @@ namespace FELFactura
                 if (identificador != null)
                 {
                     Constants.IDENTIFICADOR_DTE = identificador.ToString();
-                }               
+                }
+
+                var tinguat = reader["TotalimpuestoINGUAT"];
+                if (tinguat != null)
+                {
+                    totalInguat = tinguat.ToString(); 
+                }
             }
         }
 
@@ -98,6 +106,12 @@ namespace FELFactura
                             {
                                 impuetos = impuetos + Double.Parse(im.MontoImpuesto);
 
+                                if (!im.NombreCortoImp.Equals("NA"))
+                                {
+                                    totales.NombreCortoInguat = im.NombreCortoImp;
+                                }
+                                
+
                             }
                         }
 
@@ -107,7 +121,8 @@ namespace FELFactura
 
             }
 
-
+            // totales.TotalMontoImpuestoInguat = impuetos
+            totales.TotalMontoImpuestoInguat = totalInguat;
             totales.TotalMontoImpuesto = impuetos.ToString();
             totales.NombreCorto = "IVA";
 
@@ -301,6 +316,30 @@ namespace FELFactura
                     impuesto.MontoGravable =  montogravable.ToString();
 
                 }
+
+                //impuesto inguat
+
+                var impuestonombrecortoinguat = reader["impuestonombrecortoinguat"];
+                if (impuestonombrecortoinguat != null)
+                {
+                    impuesto.NombreCortoImp = impuestonombrecortoinguat.ToString();
+
+                }
+
+                var montogravableImp = reader["montogravableinguat"];
+                if (impuestonombrecortoinguat != null)
+                {
+                    impuesto.MontoGravableImp = montogravableImp.ToString();
+
+                }
+
+                var montoimpuestoImp = reader["montoimpuestoinguat"];
+                if (montoimpuestoImp != null)
+                {
+                    impuesto.MontoImpuestoImp = montoimpuestoImp.ToString();
+                }
+
+
                 //item en general
                 var bienoservicio = reader["bienoservicio"];
                 if (bienoservicio != null)
