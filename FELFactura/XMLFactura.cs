@@ -15,21 +15,24 @@ namespace FELFactura
         private DatosGenerales datosGenerales = new DatosGenerales();
         private Emisor emisor = new Emisor();
         private Receptor receptor = new Receptor();
+        private DataSet dsAdendas = new DataSet();
         private List<Item> items = new List<Item>();
         private Totales totales = new Totales();
         private Complementos complementos = new Complementos();
         private Abonos abonos = new Abonos();
+        private Adendas adendas = new Adendas();
         private NotaCredito nota = new NotaCredito();
         private Retenciones retenciones = new Retenciones();
         string v_rootxml = "";
         string fac_num = "";
-        public String getXML(string XMLInvoice, string XMLDetailInvoce, string path, string fac_num)
+        public String getXML(string XMLInvoice, string XMLDetailInvoce, string xmlAdendas,  string frases, string fac_num)
         {
+            Constants.esADENDAS = !xmlAdendas.ToUpper().Equals("NA") ? true : false;           
             String xml = "";
-            v_rootxml = path;
+           // v_rootxml = path;
             this.fac_num = fac_num;
             //convertir a dataset los string para mayor manupulacion
-            XmlToDataSet(XMLInvoice, XMLDetailInvoce);
+            XmlToDataSet(XMLInvoice, XMLDetailInvoce, xmlAdendas);
             //llenar estructuras
             TipoDocumento tipoDocumento = new TipoDocumento();
             tipoDocumento.getTipo(dstinvoicexml);
@@ -45,16 +48,16 @@ namespace FELFactura
                 if (Constants.TIPO_EXPO == "SI")
                 {
                     XMLFacturaExportacion xMLFacturaExportacion = new XMLFacturaExportacion();
-                    xml = xMLFacturaExportacion.getXML(XMLInvoice, XMLDetailInvoce, path, fac_num);
+                    xml = xMLFacturaExportacion.getXML(XMLInvoice, XMLDetailInvoce, frases, fac_num);
                 }
                 else
                 {
-                    xml = getXML();
+                    xml = getXML(frases);
                 }
             }
             else
             {
-                xml = getXML();
+                xml = getXML(frases);
             }
 
             //armar xml
@@ -63,7 +66,7 @@ namespace FELFactura
 
 
         //Convertir XML a DataSet
-        private bool XmlToDataSet(string XMLInvoice, string XMLDetailInvoce)
+        private bool XmlToDataSet(string XMLInvoice, string XMLDetailInvoce, string xmlAdendas)
         {
             try
             {
@@ -75,6 +78,12 @@ namespace FELFactura
                 //Convieritiendo XML a DataSet Detalle Factura
                 System.IO.StringReader rddetailinvoice = new System.IO.StringReader(XMLDetailInvoce);
                 dstdetailinvoicexml.ReadXml(rddetailinvoice);
+
+                if (Constants.esADENDAS)
+                {
+                    System.IO.StringReader rdFrases = new System.IO.StringReader(xmlAdendas);
+                    dsAdendas.ReadXml(rdFrases);
+                }              
                 return true;
             }
             catch (Exception ex)
@@ -89,6 +98,10 @@ namespace FELFactura
         {
 
             LlenarEstructuras.DatosGenerales(dstinvoicexml, datosGenerales);
+            if (Constants.esADENDAS)
+            {
+                LlenarEstructuras.Adendasread(dsAdendas, adendas);
+            }              
             LlenarEstructuras.DatosEmisor(dstinvoicexml, emisor);
             LlenarEstructuras.DatosReceptor(dstinvoicexml, receptor, datosGenerales);
             LlenarEstructuras.DatosItems(dstdetailinvoicexml, items);
@@ -125,9 +138,19 @@ namespace FELFactura
 
 
 
+        private string[] setFrases(string xfrases)
+        {
 
+            return xfrases.Split(';');
+        }
 
-        private String getXML()
+        private string[] setNumerosFrases(string xfrases)
+        {
+
+            return xfrases.Split(',');
+        }
+
+        private String getXML(string f)
         {
             XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.2.0");
             XNamespace cfc = XNamespace.Get("http://www.sat.gob.gt/dte/fel/CompCambiaria/0.1.0");
@@ -218,25 +241,21 @@ namespace FELFactura
             DireccionReceptor.Add(DepartamentoReceptor);
             DireccionReceptor.Add(PaisReceptor);
 
-            XElement Frases = null;
-            if (Constants.TIPO_DOC == "FACT" || Constants.TIPO_DOC == "FCAM")
+            //Frases
+
+            XElement Frases = new XElement(dte + "Frases");
+            DatosEmision.Add(Frases);
+
+            //   for(int i = 0; i<setFrases(fra)
+            int ss = setFrases(f).Length;
+            for (int i = 0; i < ss; i++)
             {
-                if (Constants.EXENTA)
-                {
-                    //frases
-                    Frases = new XElement(dte + "Frases");
-                    DatosEmision.Add(Frases);
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "1"));
-                    Frases.Add(Frase1);
-                }
-                else
-                {
-                    //frases
-                    Frases = new XElement(dte + "Frases");
-                    DatosEmision.Add(Frases);
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "1"));
-                    Frases.Add(Frase1);
-                }
+                string[] arr = setFrases(f);
+                string cod = setNumerosFrases(arr[i])[0];
+                string tipo = setNumerosFrases(arr[i])[1];
+
+                XElement frase = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", cod), new XAttribute("TipoFrase", tipo));
+                Frases.Add(frase);
             }
 
             // detalle de factura 
@@ -315,17 +334,19 @@ namespace FELFactura
             XElement GranTotal = new XElement(dte + "GranTotal", totales.GranTotal);
             Totales.Add(GranTotal);
 
-            /* XElement Adendas = new XElement(dte + "Adenda",
-                      new XElement("CodCliente", Constants.NUMERO_ACCESO)
-                      , new XElement("NomCliente", Constants.RECEPTOR)
-                      , new XElement("RazonSocCliente", Constants.RECEPTOR)
-                      , new XElement("Vendedor", Constants.VENDEDOR)
-                      , new XElement("Pedido", "")
-                      , new XElement("CondicionPago", Constants.PAGO)
-                 );
-             SAT.Add(Adendas);*/
-
-
+            if (Constants.esADENDAS)
+            {
+                XElement Adendas = new XElement(dte + "Adenda",
+                      new XElement("orden_compra", adendas.orden_compra)
+                     , new XElement("sucursal", adendas.sucursal)
+                     , new XElement("fecha_vencimiento", adendas.fecha_vencimiento)
+                     , new XElement("vendedor", adendas.vendedor)
+                     , new XElement("pedido", adendas.pedido)
+                     , new XElement("condicion_pago", adendas.condicion_pago)
+                     , new XElement("codigo_art",adendas.codigo_art)
+                );
+                SAT.Add(Adendas);
+            }
 
             switch (Constants.TIPO_DOC)
             {

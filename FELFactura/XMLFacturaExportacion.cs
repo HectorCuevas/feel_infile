@@ -22,7 +22,7 @@ namespace FELFactura
         public String getXML(string XMLInvoice, string XMLDetailInvoce, string path, string fac_num)
         {
 
-            v_rootxml = path;
+         //   v_rootxml = path;
             this.fac_num = fac_num;
             //convertir a dataset los string para mayor manupulacion
             XmlToDataSet(XMLInvoice, XMLDetailInvoce);

@@ -70,7 +70,53 @@ namespace FELFactura
                 }               
             }
         }
-
+        public static void Adendasread(DataSet xmlFrases, Adendas adendas)
+        {
+            foreach (DataRow reader in xmlFrases.Tables[0].Rows)
+            {
+                var orden = reader["orden_compra"];
+                if (orden != null)
+                {
+                    adendas.orden_compra = orden.ToString();
+                }
+                //
+                var sucursal = reader["sucursal"];
+                if (sucursal != null)
+                {
+                    adendas.sucursal = sucursal.ToString();
+                }
+                //
+                var fecha_vencimiento = reader["fecha_vencimiento"];
+                if (fecha_vencimiento != null)
+                {
+                    adendas.fecha_vencimiento = fecha_vencimiento.ToString();
+                }
+                //
+                var vendedor = reader["vendedor"];
+                if (vendedor != null)
+                {
+                    adendas.vendedor = vendedor.ToString();
+                }
+                //
+                var pedido = reader["pedido"];
+                if (pedido != null)
+                {
+                    adendas.pedido = pedido.ToString();
+                }
+                //
+                var condicion_pago = reader["condicion_pago"];
+                if (condicion_pago != null)
+                {
+                    adendas.condicion_pago = condicion_pago.ToString();
+                }
+                //
+                var codigo_art = reader["codigo_art"];
+                if (codigo_art != null)
+                {
+                    adendas.codigo_art = codigo_art.ToString();
+                }
+            }
+        }
         public static void Totales(DataSet dstcompanyxml, Totales totales,List<Item>lst)
         {
 
