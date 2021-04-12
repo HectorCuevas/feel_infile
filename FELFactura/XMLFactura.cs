@@ -337,13 +337,10 @@ namespace FELFactura
             if (Constants.esADENDAS)
             {
                 XElement Adendas = new XElement(dte + "Adenda",
-                      new XElement("orden_compra", adendas.orden_compra)
-                     , new XElement("sucursal", adendas.sucursal)
-                     , new XElement("fecha_vencimiento", adendas.fecha_vencimiento)
-                     , new XElement("vendedor", adendas.vendedor)
-                     , new XElement("pedido", adendas.pedido)
+                      new XElement("filee", adendas.filee)
+                     , new XElement("referencia", adendas.referencia)
+                     , new XElement("tipo_cambio", adendas.tipo_cambio)
                      , new XElement("condicion_pago", adendas.condicion_pago)
-                     , new XElement("codigo_art",adendas.codigo_art)
                 );
                 SAT.Add(Adendas);
             }

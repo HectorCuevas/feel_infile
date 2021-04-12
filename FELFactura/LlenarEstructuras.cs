@@ -74,46 +74,29 @@ namespace FELFactura
         {
             foreach (DataRow reader in xmlFrases.Tables[0].Rows)
             {
-                var orden = reader["orden_compra"];
-                if (orden != null)
+                //filee
+                var filee = reader["filee"];
+                if (filee != null)
                 {
-                    adendas.orden_compra = orden.ToString();
+                    adendas.filee = filee.ToString();
                 }
-                //
-                var sucursal = reader["sucursal"];
-                if (sucursal != null)
+                //referencia
+                var referencia = reader["referencia"];
+                if (referencia != null)
                 {
-                    adendas.sucursal = sucursal.ToString();
+                    adendas.referencia = referencia.ToString();
                 }
-                //
-                var fecha_vencimiento = reader["fecha_vencimiento"];
-                if (fecha_vencimiento != null)
+                //tipo_cambio
+                var tipo_cambio = reader["tipo_cambio"];
+                if (tipo_cambio != null)
                 {
-                    adendas.fecha_vencimiento = fecha_vencimiento.ToString();
+                    adendas.tipo_cambio = tipo_cambio.ToString();
                 }
-                //
-                var vendedor = reader["vendedor"];
-                if (vendedor != null)
-                {
-                    adendas.vendedor = vendedor.ToString();
-                }
-                //
-                var pedido = reader["pedido"];
-                if (pedido != null)
-                {
-                    adendas.pedido = pedido.ToString();
-                }
-                //
+                //condicion_pago
                 var condicion_pago = reader["condicion_pago"];
                 if (condicion_pago != null)
                 {
                     adendas.condicion_pago = condicion_pago.ToString();
-                }
-                //
-                var codigo_art = reader["codigo_art"];
-                if (codigo_art != null)
-                {
-                    adendas.codigo_art = codigo_art.ToString();
                 }
             }
         }
