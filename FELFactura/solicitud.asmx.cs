@@ -25,7 +25,7 @@ namespace FELFactura
 
 
         [WebMethod]
-        public DataSet envioSolicitud(String xml_enc, String xml_det, string adendas, string frases, String num_fac)
+        public DataSet envioSolicitud(String xml_enc, String xml_det,  string frases, String num_fac)
         {
             String xmlDoc = "";
             String asd = "";
@@ -33,7 +33,7 @@ namespace FELFactura
             try
             {
                 XMLFactura xml = new XMLFactura();
-
+                string adendas = "NA";
                 xmlDoc = xml.getXML(xml_enc, xml_det, adendas, frases, num_fac);
                 //bool hayInternet = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
                 XmlDocument doc = new XmlDocument();

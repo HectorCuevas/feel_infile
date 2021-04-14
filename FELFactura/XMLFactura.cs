@@ -27,7 +27,8 @@ namespace FELFactura
         string fac_num = "";
         public String getXML(string XMLInvoice, string XMLDetailInvoce, string xmlAdendas,  string frases, string fac_num)
         {
-            Constants.esADENDAS = !xmlAdendas.ToUpper().Equals("NA") ? true : false;           
+            Constants.esADENDAS = !xmlAdendas.ToUpper().Equals("NA") ? true : false;
+            Constants.esADENDAS = false;
             String xml = "";
            // v_rootxml = path;
             this.fac_num = fac_num;
@@ -244,18 +245,22 @@ namespace FELFactura
             //Frases
 
             XElement Frases = new XElement(dte + "Frases");
-            DatosEmision.Add(Frases);
+            
 
             //   for(int i = 0; i<setFrases(fra)
-            int ss = setFrases(f).Length;
-            for (int i = 0; i < ss; i++)
+            if (!f.Contains("NA"))
             {
-                string[] arr = setFrases(f);
-                string cod = setNumerosFrases(arr[i])[0];
-                string tipo = setNumerosFrases(arr[i])[1];
+                DatosEmision.Add(Frases);
+                int ss = setFrases(f).Length;
+                for (int i = 0; i < ss; i++)
+                {
+                    string[] arr = setFrases(f);
+                    string cod = setNumerosFrases(arr[i])[0];
+                    string tipo = setNumerosFrases(arr[i])[1];
 
-                XElement frase = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", cod), new XAttribute("TipoFrase", tipo));
-                Frases.Add(frase);
+                    XElement frase = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", cod), new XAttribute("TipoFrase", tipo));
+                    Frases.Add(frase);
+                }
             }
 
             // detalle de factura 
@@ -316,6 +321,7 @@ namespace FELFactura
             }
             if (Constants.EXENTA && Constants.TIPO_DOC == "FACT")
             {
+                DatosEmision.Add(Frases);
                 XElement Frase3 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "10"), new XAttribute("TipoFrase", "4"));
                 Frases.Add(Frase3);
 

@@ -294,8 +294,8 @@ namespace FELFactura
             XElement CodigoComprador = new XElement(cex + "CodigoComprador", receptor.IDReceptor);
             XElement OtraReferencia = new XElement(cex + "OtraReferencia","NO HAY");
             XElement INCOTERM = new XElement(cex + "INCOTERM", complementos.transporte);
-            XElement NombreExportador = new XElement(cex + "NombreExportador", "EPIDAURO, S.A.");
-            XElement CodigoExportador = new XElement(cex + "CodigoExportador", "E23556");
+            XElement NombreExportador = new XElement(cex + "NombreExportador", "G.W.F. FRANKLIN, S.A.");
+            XElement CodigoExportador = new XElement(cex + "CodigoExportador", "G20906");
             Exportacion.Add(NombreConsignatarioODestinatario);
             Exportacion.Add(DireccionConsignatarioODestinatario);
             Exportacion.Add(CodigoConsignatarioODestinatario);
