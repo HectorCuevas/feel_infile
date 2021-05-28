@@ -244,7 +244,7 @@ namespace FELFactura
             //Frases
 
             XElement Frases = new XElement(dte + "Frases");
-            DatosEmision.Add(Frases);
+
 
             //   for(int i = 0; i<setFrases(fra)
             if (!f.Contains("NA"))
@@ -321,6 +321,7 @@ namespace FELFactura
             }
             if (Constants.EXENTA && Constants.TIPO_DOC == "FACT")
             {
+                DatosEmision.Add(Frases);
                 XElement Frase3 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "10"), new XAttribute("TipoFrase", "4"));
                 Frases.Add(Frase3);
 
