@@ -20,7 +20,7 @@ namespace FELFactura
 
         public const String ALIAS = "EPIDAURO";
         public const String ES_ANULACION = "N";
-        public const String LLAVE = "4865c9949f6094472d6af60ab8d8453a";
+        public const String LLAVE = "a1592a86f61fd6e5622048e9887d5148";
 
         //PARA REALTEK
         //public const String ALIAS = "REALTEK";
