@@ -75,3 +75,7 @@ C:\Users\Norman\Desktop\EPIDAURO\feel_infile\SolitudFirma\obj\Debug\SolicitudFir
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\SolitudFirma\obj\Debug\SolicitudFirma.csproj.CopyComplete
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\SolitudFirma\obj\Debug\SolicitudFirma.exe
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\SolitudFirma\obj\Debug\SolicitudFirma.pdb
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\SolitudFirma\obj\Debug\SolicitudFirma.exe
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\SolitudFirma\obj\Debug\SolicitudFirma.pdb
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\SolitudFirma\obj\Debug\SolicitudFirma.csprojAssemblyReference.cache
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\SolitudFirma\obj\Debug\SolicitudFirma.csproj.CoreCompileInputs.cache
