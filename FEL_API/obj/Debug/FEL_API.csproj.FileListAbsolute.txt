@@ -410,3 +410,7 @@ C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FEL_API\obj\Debug\FEL_API.csprojAss
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FEL_API\obj\Debug\FEL_API.csproj.CopyComplete
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FEL_API\obj\Debug\FEL_API.dll
 C:\Users\Norman\Desktop\EPIDAURO\feel_infile\FEL_API\obj\Debug\FEL_API.pdb
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\FEL_API\obj\Debug\FEL_API.csprojAssemblyReference.cache
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\FEL_API\obj\Debug\FEL_API.csproj.CoreCompileInputs.cache
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\FEL_API\obj\Debug\FEL_API.dll
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\FEL_API\obj\Debug\FEL_API.pdb
