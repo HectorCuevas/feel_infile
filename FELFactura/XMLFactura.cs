@@ -575,7 +575,7 @@ namespace FELFactura
 
             }
 
-            if (Constants.EXENTA && Constants.TIPO_DOC == "FACT")
+            if (Constants.EXENTA && (Constants.TIPO_DOC == "FACT" || Constants.TIPO_DOC == "FCAM"))
 
             {
 
