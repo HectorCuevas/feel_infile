@@ -151,9 +151,6 @@ namespace FELFactura
                         Constants.RETENEDOR = true;
 
                     }
-
-
-
                 }
             }
         }
