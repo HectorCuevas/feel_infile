@@ -76,6 +76,7 @@ namespace FELFactura
         public static String TIPO_RECIBO = "RECI";
         public static String TIPO_NOTA_DEBITO = "NDEB";
         public static String TIPO_NOTA_CREDITO = "NCRE";
+        internal static bool esADENDAS;
         #endregion
 
     }

@@ -70,7 +70,67 @@ namespace FELFactura
                 }               
             }
         }
+        public static void Adendasread(DataSet xmlFrases, Adendas adendas)
+        {
+            foreach (DataRow reader in xmlFrases.Tables[0].Rows)
+            {
+                var interno = reader["interno"];
+                if (interno != null)
+                {
+                    adendas.interno = interno.ToString();
+                }
+                //
+                var dpi = reader["dpi"];
+                if (dpi != null)
+                {
+                    adendas.dpi = dpi.ToString();
+                }
+                //
+                var renta = reader["renta"];
+                if (renta != null)
+                {
+                    adendas.renta = renta.ToString();
+                }
+                //
+                var forma_pago = reader["forma_pago"];
+                if (forma_pago != null)
+                {
+                    adendas.forma_pago = forma_pago.ToString();
+                }
+                //
+                var telefono = reader["telefono"];
+                if (telefono != null)
+                {
+                    adendas.telefono = telefono.ToString();
+                }
+                //
+                var vendedor = reader["vendedor"];
+                if (vendedor != null)
+                {
+                    adendas.vendedor = vendedor.ToString();
+                }
+                //
+                var tipo_venta = reader["tipo_vent"];
+                if (tipo_venta != null)
+                {
+                    adendas.tipo_venta = tipo_venta.ToString();
+                }
 
+                //
+                var observaciones = reader["observaciones"];
+                if (observaciones != null)
+                {
+                    adendas.observaciones = observaciones.ToString();
+                }
+
+                //
+                var leyenda = reader["leyenda"];
+                if (leyenda != null)
+                {
+                    adendas.leyenda = leyenda.ToString();
+                }
+            }
+        }
         public static void Totales(DataSet dstcompanyxml, Totales totales,List<Item>lst)
         {
 

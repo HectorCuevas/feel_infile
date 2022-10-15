@@ -12,6 +12,7 @@ namespace FELFactura
         bool isFCAM = false, isNCRE = false, isNDEB = false;
         private DataSet dstinvoicexml = new DataSet();
         private DataSet dstdetailinvoicexml = new DataSet();
+        private DataSet dsAdendas = new DataSet();
         private DatosGenerales datosGenerales = new DatosGenerales();
         private Emisor emisor = new Emisor();
         private Receptor receptor = new Receptor();
@@ -19,17 +20,18 @@ namespace FELFactura
         private Totales totales = new Totales();
         private Complementos complementos = new Complementos();
         private Abonos abonos = new Abonos();
+        private Adendas adendas = new Adendas();
         private NotaCredito nota = new NotaCredito();
         private Retenciones retenciones = new Retenciones();
         string v_rootxml = "";
         string fac_num = "";
-        public String getXML(string XMLInvoice, string XMLDetailInvoce, string path, string fac_num)
+        public String getXML(string XMLInvoice, string XMLDetailInvoce, string XMLAdendas, string fac_num)
         {
+            Constants.esADENDAS = !XMLAdendas.ToUpper().Equals("NA") ? true : false;
             String xml = "";
-            v_rootxml = path;
             this.fac_num = fac_num;
             //convertir a dataset los string para mayor manupulacion
-            XmlToDataSet(XMLInvoice, XMLDetailInvoce);
+            XmlToDataSet(XMLInvoice, XMLDetailInvoce, XMLAdendas);
             //llenar estructuras
             TipoDocumento tipoDocumento = new TipoDocumento();
             tipoDocumento.getTipo(dstinvoicexml);
@@ -37,7 +39,7 @@ namespace FELFactura
             if (Constants.TIPO_DOC == "NABN")
             {
                 XMLNotasAbono xMLNotasAbono = new XMLNotasAbono();
-                xml = xMLNotasAbono.getXML(XMLInvoice, XMLDetailInvoce, "123546", fac_num);
+                xml = xMLNotasAbono.getXML(XMLInvoice, XMLDetailInvoce,  fac_num);
             }
             else
             if (Constants.TIPO_DOC == "FCAM" || Constants.TIPO_DOC == "FACT")
@@ -45,7 +47,7 @@ namespace FELFactura
                 if (Constants.TIPO_EXPO == "SI")
                 {
                     XMLFacturaExportacion xMLFacturaExportacion = new XMLFacturaExportacion();
-                    xml = xMLFacturaExportacion.getXML(XMLInvoice, XMLDetailInvoce, path, fac_num);
+                    xml = xMLFacturaExportacion.getXML(XMLInvoice, XMLDetailInvoce, fac_num);
                 }
                 else
                 {
@@ -63,7 +65,7 @@ namespace FELFactura
 
 
         //Convertir XML a DataSet
-        private bool XmlToDataSet(string XMLInvoice, string XMLDetailInvoce)
+        private bool XmlToDataSet(string XMLInvoice, string XMLDetailInvoce, string xmlAdendas)
         {
             try
             {
@@ -75,6 +77,12 @@ namespace FELFactura
                 //Convieritiendo XML a DataSet Detalle Factura
                 System.IO.StringReader rddetailinvoice = new System.IO.StringReader(XMLDetailInvoce);
                 dstdetailinvoicexml.ReadXml(rddetailinvoice);
+
+                if (Constants.esADENDAS)
+                {
+                    System.IO.StringReader rdFrases = new System.IO.StringReader(xmlAdendas);
+                    dsAdendas.ReadXml(rdFrases);
+                }
                 return true;
             }
             catch (Exception ex)
@@ -89,6 +97,10 @@ namespace FELFactura
         {
 
             LlenarEstructuras.DatosGenerales(dstinvoicexml, datosGenerales);
+            if (Constants.esADENDAS)
+            {
+                LlenarEstructuras.Adendasread(dsAdendas, adendas);
+            }
             LlenarEstructuras.DatosEmisor(dstinvoicexml, emisor);
             LlenarEstructuras.DatosReceptor(dstinvoicexml, receptor, datosGenerales);
             LlenarEstructuras.DatosItems(dstdetailinvoicexml, items);
@@ -325,7 +337,21 @@ namespace FELFactura
                  );
              SAT.Add(Adendas);*/
 
-
+            if(Constants.esADENDAS)
+            {
+                XElement Adendas = new XElement(dte + "Adenda",
+                      new XElement("interno", adendas.interno)
+                     , new XElement("dpi", adendas.dpi)
+                     , new XElement("renta", adendas.renta)
+                     , new XElement("forma_pago", adendas.forma_pago)
+                     , new XElement("telefono", adendas.telefono)
+                     , new XElement("vendedor", adendas.vendedor)
+                     , new XElement("tipo_vent", adendas.tipo_venta)
+                     , new XElement("observaciones", adendas.observaciones)
+                     , new XElement("leyenda", adendas.leyenda)
+                );
+                SAT.Add(Adendas);
+            }
 
             switch (Constants.TIPO_DOC)
             {
