@@ -31,3 +31,9 @@ C:\Users\Norman\Documents\PROYECTOS FEL 2020\feel_infile\Modelos\obj\Release\Mod
 C:\Users\Norman\Documents\PROYECTOS FEL 2020\feel_infile\Modelos\obj\Release\Modelos.csproj.CoreCompileInputs.cache
 C:\Users\Norman\Documents\PROYECTOS FEL 2020\feel_infile\Modelos\obj\Release\Modelos.dll
 C:\Users\Norman\Documents\PROYECTOS FEL 2020\feel_infile\Modelos\obj\Release\Modelos.pdb
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\Modelos\bin\Release\Modelos.dll
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\Modelos\bin\Release\Modelos.pdb
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\Modelos\obj\Release\Modelos.csprojAssemblyReference.cache
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\Modelos\obj\Release\Modelos.csproj.CoreCompileInputs.cache
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\Modelos\obj\Release\Modelos.dll
+C:\Users\ThinkPad T490\Documents\workspace\feel_infile\Modelos\obj\Release\Modelos.pdb

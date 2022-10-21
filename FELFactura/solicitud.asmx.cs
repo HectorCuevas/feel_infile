@@ -25,7 +25,7 @@ namespace FELFactura
 
 
         [WebMethod]
-        public DataSet envioSolicitud(String xml_enc, String xml_det, String num_fac)
+        public DataSet envioSolicitud(String xml_enc, String xml_det, string frases, String num_fac)
         {
             String xmlDoc = "";
             String asd = "";
@@ -34,7 +34,8 @@ namespace FELFactura
             {
                 XMLFactura xml = new XMLFactura();
 
-                xmlDoc = xml.getXML(xml_enc, xml_det, "ashdashd", num_fac);
+                // Generar el xml que se manda a la sat
+                xmlDoc = xml.getXML(xml_enc, xml_det, frases, num_fac);
                 //bool hayInternet = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
                 XmlDocument doc = new XmlDocument();
                 doc.PreserveWhitespace = true;
@@ -47,6 +48,7 @@ namespace FELFactura
                 }
 
                 //saveJSon("", "C:\\FACTURAS_JSON\\archivo.txt");
+                // aqui se manda a firmar pero por motivo de prueba se comenta
                 ds = MainWS(xmlDoc, num_fac);
             }
             catch (DirectoryNotFoundException ex)
@@ -159,7 +161,7 @@ namespace FELFactura
                     solictud.archivo = System.Convert.ToBase64String(plainTextBytes);
                     solictud.codigo = cod;
                     solictud.alias = Constants.ALIAS;
-                    solictud.es_anulacion = "N";
+                    solictud.es_anulacion = "S";
 
                     //pasar a json el objeto
                     string json = JsonConvert.SerializeObject(solictud);
