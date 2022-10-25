@@ -25,16 +25,17 @@ namespace FELFactura
         
        
         [WebMethod]
-        public DataSet envioSolicitud(String xml_enc, String xml_det, String num_fac)
+        public DataSet envioSolicitud(String xml_enc, String xml_det, String frases, String num_fac)
         {
             String xmlDoc = "";
             String asd = "";
             DataSet ds = new DataSet();
             try
+
             {
                 XMLFactura xml = new XMLFactura();
 
-                xmlDoc = xml.getXML(xml_enc, xml_det, "ashdashd", num_fac);
+                xmlDoc = xml.getXML(xml_enc, xml_det, frases, num_fac);
                 //bool hayInternet = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
                 XmlDocument doc = new XmlDocument();
                 doc.PreserveWhitespace = true;
@@ -47,7 +48,9 @@ namespace FELFactura
                 }
 
                 //saveJSon("", "C:\\FACTURAS_JSON\\archivo.txt");
-                ds = MainWS(xmlDoc, num_fac);
+
+                //esto ejecuta el servicio
+                //ds = MainWS(xmlDoc, num_fac);
             }
             catch (DirectoryNotFoundException ex)
             {
@@ -159,7 +162,7 @@ namespace FELFactura
                     solictud.archivo = System.Convert.ToBase64String(plainTextBytes);
                     solictud.codigo = cod;
                     solictud.alias = Constants.ALIAS;
-                    solictud.es_anulacion = "N";
+                    solictud.es_anulacion = "S";
 
                     //pasar a json el objeto
                     string json = JsonConvert.SerializeObject(solictud);
@@ -392,7 +395,10 @@ namespace FELFactura
                             dt.Rows.Add(dr);
                             dsError.Tables.Add(dt);
                             respuesta = dsError;
-                            respuesta = certificacion(respuestaSolitud.archivo, xmlGenerado);
+                            if (respuestaSolitud.resultado == "true")
+                            {
+                                respuesta = certificacion(respuestaSolitud.archivo, xmlGenerado);
+                            }
                         }
                         catch (JsonReaderException ex)
                         {

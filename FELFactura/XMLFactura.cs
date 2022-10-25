@@ -51,13 +51,11 @@ namespace FELFactura
 
         string fac_num = "";
 
-        public String getXML(string XMLInvoice, string XMLDetailInvoce, string path, string fac_num)
+        public String getXML(string XMLInvoice, string XMLDetailInvoce, string frases, string fac_num)
 
         {
 
             String xml = "";
-
-            v_rootxml = path;
 
             this.fac_num = fac_num;
 
@@ -95,7 +93,7 @@ namespace FELFactura
 
                     XMLFacturaExportacion xMLFacturaExportacion = new XMLFacturaExportacion();
 
-                    xml = xMLFacturaExportacion.getXML(XMLInvoice, XMLDetailInvoce, path, fac_num);
+                    xml = xMLFacturaExportacion.getXML(XMLInvoice, XMLDetailInvoce, frases, fac_num);
 
                 }
 
@@ -103,7 +101,7 @@ namespace FELFactura
 
                 {
 
-                    xml = getXML();
+                    xml = getXML(frases);
 
                 }
 
@@ -113,7 +111,7 @@ namespace FELFactura
 
             {
 
-                xml = getXML();
+                xml = getXML(frases);
 
             }
 
@@ -259,7 +257,7 @@ namespace FELFactura
 
 
 
-        private String getXML()
+        private String getXML(string sFrases)
 
         {
 
@@ -360,7 +358,6 @@ namespace FELFactura
             XElement Pais = new XElement(dte + "Pais", emisor.Pais);
 
             DireccionEmisor.Add(Direccion);
-
             DireccionEmisor.Add(CodigoPostal);
             DireccionEmisor.Add(Municipio);
             DireccionEmisor.Add(Departamento);
@@ -416,48 +413,22 @@ namespace FELFactura
 
 
 
-            XElement Frases = null;
+            XElement Frases = new XElement(dte + "Frases");
 
-            if (Constants.TIPO_DOC == "FACT" || Constants.TIPO_DOC == "FCAM")
+            if (!sFrases.Contains("NA"))
 
             {
-
-                if (Constants.EXENTA)
-
+                DatosEmision.Add(Frases);
+                int ss = setFrases(sFrases).Length;
+                for (int i = 0; i < ss; i++)
                 {
+                    string[] arr = setFrases(sFrases);
+                    string cod = setNumerosFrases(arr[i])[0];
+                    string tipo = setNumerosFrases(arr[i])[1];
 
-                    //frases
+                    XElement frase = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", cod), new XAttribute("TipoFrase", tipo));
+                    Frases.Add(frase);
 
-                    Frases = new XElement(dte + "Frases");
-
-                    DatosEmision.Add(Frases);
-
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "1"));
-
-                    Frases.Add(Frase1);
-
-                }
-
-                else
-
-                {
-
-                    //frases
-
-                    Frases = new XElement(dte + "Frases");
-
-                    DatosEmision.Add(Frases);
-
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "1"));
-
-                    Frases.Add(Frase1);
-
-                }
-
-                if (Constants.RETENEDOR)
-                {
-                    XElement Frase3 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "2"));
-                    Frases.Add(Frase3);
                 }
             }
 
@@ -921,6 +892,17 @@ namespace FELFactura
 
             return res;
 
+        }
+        private string[] setFrases(string xfrases)
+        {
+
+            return xfrases.Split(';');
+        }
+
+        private string[] setNumerosFrases(string xfrases)
+        {
+
+            return xfrases.Split(',');
         }
 
     }
