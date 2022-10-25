@@ -50,7 +50,7 @@ namespace FELFactura
                 //saveJSon("", "C:\\FACTURAS_JSON\\archivo.txt");
 
                 //esto ejecuta el servicio
-                //ds = MainWS(xmlDoc, num_fac);
+                ds = MainWS(xmlDoc, num_fac); 
             }
             catch (DirectoryNotFoundException ex)
             {
