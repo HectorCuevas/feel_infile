@@ -24,7 +24,7 @@ namespace FELFactura
         private Totales totales = new Totales();
         string v_rootxml = "";
         string fac_num = "";
-        public String getXML(string XMLInvoice, string XMLDetailInvoce, string fac_num)
+        public String getXML(string XMLInvoice, string XMLDetailInvoce, string frases, string fac_num)
         {
 
             this.fac_num = fac_num;

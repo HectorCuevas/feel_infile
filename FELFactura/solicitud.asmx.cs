@@ -25,7 +25,7 @@ namespace FELFactura
 
 
         [WebMethod]
-        public DataSet envioSolicitud(String xml_enc, String xml_det, string adendas, String num_fac)
+        public DataSet envioSolicitud(String xml_enc, String xml_det, string adendas, string frases, String num_fac)
         {
             String xmlDoc = "";
             DataSet ds = new DataSet();
@@ -33,7 +33,7 @@ namespace FELFactura
             {
                 XMLFactura xml = new XMLFactura();
 
-                xmlDoc = xml.getXML(xml_enc, xml_det, adendas, num_fac);
+                xmlDoc = xml.getXML(xml_enc, xml_det, adendas, frases, num_fac);
                 XmlDocument doc = new XmlDocument();
                 doc.PreserveWhitespace = true;
                 doc.LoadXml(xmlDoc);
@@ -157,7 +157,7 @@ namespace FELFactura
                     solictud.archivo = System.Convert.ToBase64String(plainTextBytes);
                     solictud.codigo = cod;
                     solictud.alias = Constants.ALIAS;
-                    solictud.es_anulacion = "N";
+                    solictud.es_anulacion = "S";
 
                     //pasar a json el objeto
                     string json = JsonConvert.SerializeObject(solictud);
