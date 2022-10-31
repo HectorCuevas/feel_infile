@@ -19,17 +19,18 @@ namespace FELFactura
         private Totales totales = new Totales();
         string v_rootxml = "";
         string fac_num = "";
-        public String getXML(string XMLInvoice, string XMLDetailInvoce, string path, string fac_num)
+        public String getXML(string XMLInvoice, string XMLDetailInvoce, string frases, string fac_num)
         {
-
-            v_rootxml = path;
+            String xml = "";
             this.fac_num = fac_num;
             //convertir a dataset los string para mayor manupulacion
             XmlToDataSet(XMLInvoice, XMLDetailInvoce);
             //llenar estructuras
+            TipoDocumento tipoDocumento = new TipoDocumento();
+            tipoDocumento.getTipo(dstinvoicexml);
             ReaderDataset();
             //armar xml
-            return getXML();
+            return getXML(frases);
         }
 
 
@@ -75,7 +76,7 @@ namespace FELFactura
 
 
 
-        private String getXML()
+        private String getXML(string sFrases)
         {
             Boolean exenta = false;
             XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.2.0");
@@ -155,11 +156,23 @@ namespace FELFactura
 
             //frases
             XElement Frases = new XElement(dte + "Frases");
-            DatosEmision.Add(Frases);
 
-            XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "1"));
-            Frases.Add(Frase1);
+            if (!sFrases.Contains("NA"))
 
+            {
+                DatosEmision.Add(Frases);
+                int ss = setFrases(sFrases).Length;
+                for (int i = 0; i < ss; i++)
+                {
+                    string[] arr = setFrases(sFrases);
+                    string cod = setNumerosFrases(arr[i])[0];
+                    string tipo = setNumerosFrases(arr[i])[1];
+
+                    XElement frase = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", cod), new XAttribute("TipoFrase", tipo));
+                    Frases.Add(frase);
+
+                }
+            }
             // detalle de factura 
 
             XElement Items = new XElement(dte + "Items");
@@ -313,5 +326,17 @@ namespace FELFactura
 
             return res;
         }
+        private string[] setFrases(string xfrases)
+        {
+
+            return xfrases.Split(';');
+        }
+
+        private string[] setNumerosFrases(string xfrases)
+        {
+
+            return xfrases.Split(',');
+        }
+
     }
 }
