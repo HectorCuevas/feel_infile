@@ -19,17 +19,74 @@ namespace FELFactura
         private Totales totales = new Totales();
         string v_rootxml = "";
         string fac_num = "";
-        public String getXML(string XMLInvoice, string XMLDetailInvoce, string path, string fac_num)
+        public String getXML(string XMLInvoice, string XMLDetailInvoce, string frases, string fac_num)
         {
+            String xml = "";
 
-            v_rootxml = path;
             this.fac_num = fac_num;
+
             //convertir a dataset los string para mayor manupulacion
+
             XmlToDataSet(XMLInvoice, XMLDetailInvoce);
+
             //llenar estructuras
+
+            TipoDocumento tipoDocumento = new TipoDocumento();
+
+            tipoDocumento.getTipo(dstinvoicexml);
+
             ReaderDataset();
+
+            if (Constants.TIPO_DOC == "NABN")
+
+            {
+
+                XMLNotasAbono xMLNotasAbono = new XMLNotasAbono();
+
+                xml = xMLNotasAbono.getXML(XMLInvoice, XMLDetailInvoce, "123546", fac_num);
+
+            }
+
+            else
+
+            if (Constants.TIPO_DOC == "FCAM" || Constants.TIPO_DOC == "FACT")
+
+            {
+
+                if (Constants.TIPO_EXPO == "SI")
+
+                {
+
+                    XMLFacturaExportacion xMLFacturaExportacion = new XMLFacturaExportacion();
+
+                    xml = xMLFacturaExportacion.getXML(XMLInvoice, XMLDetailInvoce, frases, fac_num);
+
+                }
+
+                else
+
+                {
+
+                    xml = getXML(frases);
+
+                }
+
+            }
+
+            else
+
+            {
+
+                xml = getXML(frases);
+
+            }
+
+
+
             //armar xml
-            return getXML();
+
+            return xml;
+
         }
 
 
@@ -75,7 +132,7 @@ namespace FELFactura
 
 
 
-        private String getXML()
+        private String getXML(string sFrases)
         {
             Boolean exenta = false;
             XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.2.0");
@@ -155,10 +212,23 @@ namespace FELFactura
 
             //frases
             XElement Frases = new XElement(dte + "Frases");
-            DatosEmision.Add(Frases);
 
-            XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "1"));
-            Frases.Add(Frase1);
+            if (!sFrases.Contains("NA"))
+
+            {
+                DatosEmision.Add(Frases);
+                int ss = setFrases(sFrases).Length;
+                for (int i = 0; i < ss; i++)
+                {
+                    string[] arr = setFrases(sFrases);
+                    string cod = setNumerosFrases(arr[i])[0];
+                    string tipo = setNumerosFrases(arr[i])[1];
+
+                    XElement frase = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", cod), new XAttribute("TipoFrase", tipo));
+                    Frases.Add(frase);
+
+                }
+            }
 
             // detalle de factura 
 
@@ -222,12 +292,7 @@ namespace FELFactura
                 }
             }
 
-            if (exenta)
-            {
-                XElement Frase3 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "1"), new XAttribute("TipoFrase", "4"));
-                Frases.Add(Frase3);
-
-            }
+           
             //Totales
             XElement Totales = new XElement(dte + "Totales");
             DatosEmision.Add(Totales);
@@ -312,6 +377,17 @@ namespace FELFactura
 
 
             return res;
+        }
+        private string[] setFrases(string xfrases)
+        {
+
+            return xfrases.Split(';');
+        }
+
+        private string[] setNumerosFrases(string xfrases)
+        {
+
+            return xfrases.Split(',');
         }
     }
 }
