@@ -19,10 +19,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/04/2019 14:43:30</publishTime>
     </File>
     <File Include="bin/FELFactura.dll">
-      <publishTime>12/15/2021 17:20:51</publishTime>
+      <publishTime>10/31/2022 11:46:54</publishTime>
     </File>
     <File Include="bin/FELFactura.pdb">
-      <publishTime>12/15/2021 17:20:51</publishTime>
+      <publishTime>10/31/2022 11:46:54</publishTime>
     </File>
     <File Include="bin/Firma.dll">
       <publishTime>07/24/2019 13:36:23</publishTime>
@@ -40,10 +40,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/04/2019 14:43:31</publishTime>
     </File>
     <File Include="bin/Modelos.dll">
-      <publishTime>12/15/2021 17:20:50</publishTime>
+      <publishTime>10/31/2022 11:46:11</publishTime>
     </File>
     <File Include="bin/Modelos.pdb">
-      <publishTime>12/15/2021 17:20:50</publishTime>
+      <publishTime>10/31/2022 11:46:11</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/25/2020 14:43:45</publishTime>
@@ -205,7 +205,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/25/2020 14:43:44</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/15/2021 17:20:51</publishTime>
+      <publishTime>10/31/2022 11:46:11</publishTime>
     </File>
   </ItemGroup>
 </Project>
