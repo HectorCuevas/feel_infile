@@ -369,8 +369,7 @@ namespace FELFactura
             {
                 Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
               new XAttribute("IDReceptor", receptor.IDReceptor),
-              new XAttribute("NombreReceptor", receptor.NombreReceptor),
-              new XAttribute("TipoEspecial", retenciones.TipoEspecial));
+              new XAttribute("NombreReceptor", receptor.NombreReceptor));
                 DatosEmision.Add(Receptor);
             }
             else
