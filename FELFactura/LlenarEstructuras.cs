@@ -70,7 +70,36 @@ namespace FELFactura
                 }               
             }
         }
-
+        public static void Adendasread(DataSet xmlFrases, Adendas adendas)
+        {
+            foreach (DataRow reader in xmlFrases.Tables[0].Rows)
+            {
+                //filee
+                var filee = reader["filee"];
+                if (filee != null)
+                {
+                    adendas.filee = filee.ToString();
+                }
+                //referencia
+                var referencia = reader["referencia"];
+                if (referencia != null)
+                {
+                    adendas.referencia = referencia.ToString();
+                }
+                //tipo_cambio
+                var tipo_cambio = reader["tipo_cambio"];
+                if (tipo_cambio != null)
+                {
+                    adendas.tipo_cambio = tipo_cambio.ToString();
+                }
+                //condicion_pago
+                var condicion_pago = reader["condicion_pago"];
+                if (condicion_pago != null)
+                {
+                    adendas.condicion_pago = condicion_pago.ToString();
+                }
+            }
+        }
         public static void Totales(DataSet dstcompanyxml, Totales totales,List<Item>lst)
         {
 
@@ -435,11 +464,13 @@ namespace FELFactura
                 var RetencionISR = reader["RetencionISR"];
                 var RetencionIVA = reader["RetencionIVA"];
                 var TotalMenosRetenciones = reader["TotalMenosRetenciones"];
+                var TipoEspecial = reader["TipoEspecial"];
+
 
                 retenciones.RetencionISR = RetencionISR.ToString();
                 retenciones.RetencionIVA = RetencionIVA.ToString();
                 retenciones.TotalMenosRetenciones = TotalMenosRetenciones.ToString();
-
+                retenciones.TipoEspecial = TipoEspecial.ToString();
 
             }
         }

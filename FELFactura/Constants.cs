@@ -15,14 +15,15 @@ namespace FELFactura
 
         /*** Certificacion INFILE ***/
         public const String URL_CERTIFICACION_DTE = "https://certificador.feel.com.gt/";
-        public const String METODO_CERTIFICACION_DTE = "fel/certificacion/dte";
+        //public const String METODO_CERTIFICACION_DTE = "fel/certificacion/dte";
+        public const String METODO_CERTIFICACION_DTE = "fel/certificacion/v2/dte";
         public const String HEADER_USUARIO = "usuario";
         public const String HEADER_LLAVE = "llave";
         public const String HEADER_IDENTIFICADOR = "identificador";
 
         /** Anulaciones infile ***/
         public const String URL_ANULACION_DTE = "https://certificador.feel.com.gt/";
-        public const String METODO_ANULACION_DTE = "fel/anulacion/dte";
+        public const String METODO_ANULACION_DTE = "fel/anulacion/v2/dte";
         public static bool isEXP = false;
 
 
@@ -49,6 +50,9 @@ namespace FELFactura
         public static String TIPO_EXPO = "";
         public static bool isNCREGFACE = false;
         public static bool EXENTA = false;
+        public static bool esADENDAS = false;
+
+
         #endregion
 
         #region Rutas Megaprint

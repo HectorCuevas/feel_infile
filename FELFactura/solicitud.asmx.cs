@@ -25,7 +25,7 @@ namespace FELFactura
 
 
         [WebMethod]
-        public DataSet envioSolicitud(String xml_enc, String xml_det, String num_fac)
+        public DataSet envioSolicitud(String xml_enc, String xml_det, string adendas, string frases, String num_fac)
         {
             String xmlDoc = "";
             String asd = "";
@@ -34,7 +34,7 @@ namespace FELFactura
             {
                 XMLFactura xml = new XMLFactura();
 
-                xmlDoc = xml.getXML(xml_enc, xml_det, "ashdashd", num_fac);
+                xmlDoc = xml.getXML(xml_enc, xml_det, adendas, frases, num_fac);
                 //bool hayInternet = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
                 XmlDocument doc = new XmlDocument();
                 doc.PreserveWhitespace = true;
@@ -57,7 +57,7 @@ namespace FELFactura
                 //dt.Columns.Add(new DataColumn("xmlGenerado", typeof(string)));
 
                 DataRow dr = dt.NewRow();
-                dr["resultado"] = "LA RUTA PARA ALMACENAR LOS ARCHIVOS NO ES VALIDA O NO EXISTE. \n " + Environment.NewLine + ex.ToString();
+                dr["resultado"] = "LA RUTA PARA ALMACENAR LOS ARCHIVOS NO ES VALIDA O NO EXISTE. \n " + Environment.NewLine + ex.Message;
                 //  dr["xmlGenerado"] =xmlDoc;
                 dt.Rows.Add(dr);
                 dsError.Tables.Add(dt);
@@ -71,7 +71,7 @@ namespace FELFactura
                 //dt.Columns.Add(new DataColumn("xmlGenerado", typeof(string)));
 
                 DataRow dr = dt.NewRow();
-                dr["resultado"] = "EL DOCUMENTO XML NO SE PUDO CREAR POR LO TANTO ES NULO. \n " + Environment.NewLine + ex.ToString();
+                dr["resultado"] = "EL DOCUMENTO XML NO SE PUDO CREAR POR LO TANTO ES NULO. \n " + Environment.NewLine + ex.Message;
                 //  dr["xmlGenerado"] =xmlDoc;
                 dt.Rows.Add(dr);
                 dsError.Tables.Add(dt);
@@ -85,7 +85,7 @@ namespace FELFactura
                 //dt.Columns.Add(new DataColumn("xmlGenerado", typeof(string)));
 
                 DataRow dr = dt.NewRow();
-                dr["resultado"] = "EL DOCUMENTO XML CONTIENE VALORES INCORRECTOS POR LO TANTO NO SE PUDO GENERAR \n " + Environment.NewLine + ex.ToString();
+                dr["resultado"] = "EL DOCUMENTO XML CONTIENE VALORES INCORRECTOS POR LO TANTO NO SE PUDO GENERAR \n " + Environment.NewLine + ex.Message;
                 //  dr["xmlGenerado"] =xmlDoc;
                 dt.Rows.Add(dr);
                 dsError.Tables.Add(dt);
@@ -128,7 +128,7 @@ namespace FELFactura
                 dt.Columns.Add(new DataColumn("resultado", typeof(string)));
 
                 DataRow dr = dt.NewRow();
-                dr["resultado"] = ex.ToString();
+                dr["resultado"] = ex.Message;
                 dt.Rows.Add(dr);
                 dsError.Tables.Add(dt);
                 ds = dsError;
@@ -159,7 +159,7 @@ namespace FELFactura
                     solictud.archivo = System.Convert.ToBase64String(plainTextBytes);
                     solictud.codigo = cod;
                     solictud.alias = Constants.ALIAS;
-                    solictud.es_anulacion = "N";
+                    solictud.es_anulacion = "S";
 
                     //pasar a json el objeto
                     string json = JsonConvert.SerializeObject(solictud);

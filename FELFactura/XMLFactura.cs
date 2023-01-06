@@ -15,21 +15,24 @@ namespace FELFactura
         private DatosGenerales datosGenerales = new DatosGenerales();
         private Emisor emisor = new Emisor();
         private Receptor receptor = new Receptor();
+        private DataSet dsAdendas = new DataSet();
         private List<Item> items = new List<Item>();
         private Totales totales = new Totales();
         private Complementos complementos = new Complementos();
         private Abonos abonos = new Abonos();
+        private Adendas adendas = new Adendas();
         private NotaCredito nota = new NotaCredito();
         private Retenciones retenciones = new Retenciones();
         string v_rootxml = "";
         string fac_num = "";
-        public String getXML(string XMLInvoice, string XMLDetailInvoce, string path, string fac_num)
+        public String getXML(string XMLInvoice, string XMLDetailInvoce, string xmlAdendas,  string frases, string fac_num)
         {
+            Constants.esADENDAS = !xmlAdendas.ToUpper().Equals("NA") ? true : false;           
             String xml = "";
-            v_rootxml = path;
+           // v_rootxml = path;
             this.fac_num = fac_num;
             //convertir a dataset los string para mayor manupulacion
-            XmlToDataSet(XMLInvoice, XMLDetailInvoce);
+            XmlToDataSet(XMLInvoice, XMLDetailInvoce, xmlAdendas);
             //llenar estructuras
             TipoDocumento tipoDocumento = new TipoDocumento();
             tipoDocumento.getTipo(dstinvoicexml);
@@ -45,16 +48,16 @@ namespace FELFactura
                 if (Constants.TIPO_EXPO == "SI")
                 {
                     XMLFacturaExportacion xMLFacturaExportacion = new XMLFacturaExportacion();
-                    xml = xMLFacturaExportacion.getXML(XMLInvoice, XMLDetailInvoce, path, fac_num);
+                    xml = xMLFacturaExportacion.getXML(XMLInvoice, XMLDetailInvoce, frases, fac_num);
                 }
                 else
                 {
-                    xml = getXML();
+                    xml = getXML(frases);
                 }
             }
             else
             {
-                xml = getXML();
+                xml = getXML(frases);
             }
 
             //armar xml
@@ -63,7 +66,7 @@ namespace FELFactura
 
 
         //Convertir XML a DataSet
-        private bool XmlToDataSet(string XMLInvoice, string XMLDetailInvoce)
+        private bool XmlToDataSet(string XMLInvoice, string XMLDetailInvoce, string xmlAdendas)
         {
             try
             {
@@ -75,6 +78,12 @@ namespace FELFactura
                 //Convieritiendo XML a DataSet Detalle Factura
                 System.IO.StringReader rddetailinvoice = new System.IO.StringReader(XMLDetailInvoce);
                 dstdetailinvoicexml.ReadXml(rddetailinvoice);
+
+                if (Constants.esADENDAS)
+                {
+                    System.IO.StringReader rdFrases = new System.IO.StringReader(xmlAdendas);
+                    dsAdendas.ReadXml(rdFrases);
+                }              
                 return true;
             }
             catch (Exception ex)
@@ -89,6 +98,10 @@ namespace FELFactura
         {
 
             LlenarEstructuras.DatosGenerales(dstinvoicexml, datosGenerales);
+            if (Constants.esADENDAS)
+            {
+                LlenarEstructuras.Adendasread(dsAdendas, adendas);
+            }              
             LlenarEstructuras.DatosEmisor(dstinvoicexml, emisor);
             LlenarEstructuras.DatosReceptor(dstinvoicexml, receptor, datosGenerales);
             LlenarEstructuras.DatosItems(dstdetailinvoicexml, items);
@@ -125,11 +138,21 @@ namespace FELFactura
 
 
 
-
-
-        private String getXML()
+        private string[] setFrases(string xfrases)
         {
-            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.1.0");
+
+            return xfrases.Split(';');
+        }
+
+        private string[] setNumerosFrases(string xfrases)
+        {
+
+            return xfrases.Split(',');
+        }
+
+        private String getXML(string f)
+        {
+            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.2.0");
             XNamespace cfc = XNamespace.Get("http://www.sat.gob.gt/dte/fel/CompCambiaria/0.1.0");
             XNamespace cno = XNamespace.Get("http://www.sat.gob.gt/face2/ComplementoReferenciaNota/0.1.0");
             XNamespace xd = XNamespace.Get("http://www.w3.org/2000/09/xmldsig#");
@@ -141,7 +164,7 @@ namespace FELFactura
             XElement parameters = new XElement(dte + "GTDocumento",
                             new XAttribute(XNamespace.Xmlns + "dte", dte.NamespaceName),
                            new XAttribute(XNamespace.Xmlns + "xd", xd.NamespaceName),
-                           new XAttribute("Version", "0.4"));
+                           new XAttribute("Version", "0.1"));
             //SAT
             XElement SAT = new XElement(dte + "SAT", new XAttribute("ClaseDocumento", "dte"));
             parameters.Add(SAT);
@@ -184,10 +207,25 @@ namespace FELFactura
             DireccionEmisor.Add(Pais);
 
             //datos Receptor
-            XElement Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
-                new XAttribute("IDReceptor", receptor.IDReceptor),
-                new XAttribute("NombreReceptor", receptor.NombreReceptor));
-            DatosEmision.Add(Receptor);
+            XElement Receptor = null;
+            if (Constants.TIPO_DOC == "FESP")
+            {
+                 Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
+               new XAttribute("IDReceptor", receptor.IDReceptor),
+               new XAttribute("NombreReceptor", receptor.NombreReceptor),
+               new XAttribute("TipoEspecial", retenciones.TipoEspecial));
+                DatosEmision.Add(Receptor);
+            }
+            else
+            {
+                 Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
+                  new XAttribute("IDReceptor", receptor.IDReceptor),
+                  new XAttribute("NombreReceptor", receptor.NombreReceptor));
+                DatosEmision.Add(Receptor);
+
+            }
+
+           
             //direccion del receptor
             XElement DireccionReceptor = new XElement(dte + "DireccionReceptor");
             Receptor.Add(DireccionReceptor);
@@ -203,24 +241,24 @@ namespace FELFactura
             DireccionReceptor.Add(DepartamentoReceptor);
             DireccionReceptor.Add(PaisReceptor);
 
-            XElement Frases = null;
-            if (Constants.TIPO_DOC == "FACT" || Constants.TIPO_DOC == "FCAM")
+            //Frases
+
+            XElement Frases = new XElement(dte + "Frases");
+ 
+
+            //   for(int i = 0; i<setFrases(fra)
+            if (!f.Contains("NA"))
             {
-                if (Constants.EXENTA)
+                DatosEmision.Add(Frases);
+                int ss = setFrases(f).Length;
+                for (int i = 0; i < ss; i++)
                 {
-                    //frases
-                    Frases = new XElement(dte + "Frases");
-                    DatosEmision.Add(Frases);
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "2"), new XAttribute("TipoFrase", "1"));
-                    Frases.Add(Frase1);
-                }
-                else
-                {
-                    //frases
-                    Frases = new XElement(dte + "Frases");
-                    DatosEmision.Add(Frases);
-                    XElement Frase1 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "2"), new XAttribute("TipoFrase", "1"));
-                    Frases.Add(Frase1);
+                    string[] arr = setFrases(f);
+                    string cod = setNumerosFrases(arr[i])[0];
+                    string tipo = setNumerosFrases(arr[i])[1];
+
+                    XElement frase = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", cod), new XAttribute("TipoFrase", tipo));
+                    Frases.Add(frase);
                 }
             }
 
@@ -282,6 +320,7 @@ namespace FELFactura
             }
             if (Constants.EXENTA && Constants.TIPO_DOC == "FACT")
             {
+                DatosEmision.Add(Frases);
                 XElement Frase3 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "10"), new XAttribute("TipoFrase", "4"));
                 Frases.Add(Frase3);
 
@@ -300,17 +339,16 @@ namespace FELFactura
             XElement GranTotal = new XElement(dte + "GranTotal", totales.GranTotal);
             Totales.Add(GranTotal);
 
-            /* XElement Adendas = new XElement(dte + "Adenda",
-                      new XElement("CodCliente", Constants.NUMERO_ACCESO)
-                      , new XElement("NomCliente", Constants.RECEPTOR)
-                      , new XElement("RazonSocCliente", Constants.RECEPTOR)
-                      , new XElement("Vendedor", Constants.VENDEDOR)
-                      , new XElement("Pedido", "")
-                      , new XElement("CondicionPago", Constants.PAGO)
-                 );
-             SAT.Add(Adendas);*/
-
-
+            if (Constants.esADENDAS)
+            {
+                XElement Adendas = new XElement(dte + "Adenda",
+                      new XElement("filee", adendas.filee)
+                     , new XElement("referencia", adendas.referencia)
+                     , new XElement("tipo_cambio", adendas.tipo_cambio)
+                     , new XElement("condicion_pago", adendas.condicion_pago)
+                );
+                SAT.Add(Adendas);
+            }
 
             switch (Constants.TIPO_DOC)
             {
@@ -403,7 +441,7 @@ namespace FELFactura
                         Complemento.Add(Referencias);
                     }
                     break;
-                case "NABN":
+              /*  case "NABN":
 
                     {
                         XElement Complementos = new XElement(dte + "Complementos");
@@ -426,7 +464,7 @@ namespace FELFactura
                             );
                         Complemento.Add(Referencias);
                     }
-                    break;
+                    break;*/
                 case "FESP":
                     {
                         XElement Complementos = new XElement(dte + "Complementos");

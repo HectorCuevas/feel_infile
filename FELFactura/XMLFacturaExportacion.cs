@@ -22,7 +22,7 @@ namespace FELFactura
         public String getXML(string XMLInvoice, string XMLDetailInvoce, string path, string fac_num)
         {
 
-            v_rootxml = path;
+         //   v_rootxml = path;
             this.fac_num = fac_num;
             //convertir a dataset los string para mayor manupulacion
             XmlToDataSet(XMLInvoice, XMLDetailInvoce);
@@ -78,7 +78,7 @@ namespace FELFactura
         private String getXML()
         {
             Boolean exenta = false;
-            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.1.0");
+            XNamespace dte = XNamespace.Get("http://www.sat.gob.gt/dte/fel/0.2.0");
             XNamespace xd = XNamespace.Get("http://www.w3.org/2000/09/xmldsig#");
             XNamespace ns = XNamespace.Get("http://www.sat.gob.gt/face2/ComplementoExportaciones/0.1.0");
             XNamespace xsi = XNamespace.Get("http://www.w3.org/2001/XMLSchema-instance");
@@ -92,7 +92,7 @@ namespace FELFactura
             XElement parameters = new XElement(dte + "GTDocumento",
                             new XAttribute(XNamespace.Xmlns + "dte", dte.NamespaceName),
                            new XAttribute(XNamespace.Xmlns + "xd", xd.NamespaceName),
-                           new XAttribute("Version", "0.4"));
+                           new XAttribute("Version", "0.1"));
             //SAT
             XElement SAT = new XElement(dte + "SAT", new XAttribute("ClaseDocumento", "dte"));
             parameters.Add(SAT);
