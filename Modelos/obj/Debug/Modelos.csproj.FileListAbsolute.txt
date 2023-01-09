@@ -47,3 +47,9 @@ C:\Users\ThinkPad T490\Documents\workspace\feel_infile\Modelos\bin\Debug\Modelos
 C:\Users\ThinkPad T490\Documents\workspace\feel_infile\Modelos\obj\Debug\Modelos.csproj.CoreCompileInputs.cache
 C:\Users\ThinkPad T490\Documents\workspace\feel_infile\Modelos\obj\Debug\Modelos.dll
 C:\Users\ThinkPad T490\Documents\workspace\feel_infile\Modelos\obj\Debug\Modelos.pdb
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\bin\Debug\Modelos.dll
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\bin\Debug\Modelos.pdb
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\obj\Debug\Modelos.csproj.AssemblyReference.cache
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\obj\Debug\Modelos.csproj.CoreCompileInputs.cache
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\obj\Debug\Modelos.dll
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\obj\Debug\Modelos.pdb
