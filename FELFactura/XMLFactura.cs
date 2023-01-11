@@ -208,22 +208,18 @@ namespace FELFactura
 
             //datos Receptor
             XElement Receptor = null;
-            if (Constants.TIPO_DOC == "FESP")
-            {
-                 Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
-               new XAttribute("IDReceptor", receptor.IDReceptor),
-               new XAttribute("NombreReceptor", receptor.NombreReceptor),
-               new XAttribute("TipoEspecial", retenciones.TipoEspecial));
-                DatosEmision.Add(Receptor);
-            }
-            else
-            {
-                 Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
-                  new XAttribute("IDReceptor", receptor.IDReceptor),
-                  new XAttribute("NombreReceptor", receptor.NombreReceptor));
-                DatosEmision.Add(Receptor);
+            Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
+                new XAttribute("IDReceptor", receptor.IDReceptor),
+                new XAttribute("NombreReceptor", receptor.NombreReceptor));
 
+            if (!datosGenerales.tipoEspecial.Equals("NA"))
+            {
+                Receptor.Add(new XAttribute("TipoEspecial", datosGenerales.tipoEspecial));
             }
+
+            DatosEmision.Add(Receptor);
+
+            
 
            
             //direccion del receptor
