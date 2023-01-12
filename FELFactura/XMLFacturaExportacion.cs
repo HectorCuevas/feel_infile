@@ -137,10 +137,19 @@ namespace FELFactura
             XElement Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
                 new XAttribute("IDReceptor", "CF"),
                 new XAttribute("NombreReceptor", receptor.NombreReceptor));
-            DatosEmision.Add(Receptor);
             //direccion del receptor
             XElement DireccionReceptor = new XElement(dte + "DireccionReceptor");
             Receptor.Add(DireccionReceptor);
+
+
+            if (!datosGenerales.tipoEspecial.Equals("NA"))
+            {
+                Receptor.Add(new XAttribute("TipoEspecial", datosGenerales.tipoEspecial));
+            }
+
+            DatosEmision.Add(Receptor);
+
+
             //elementos dentro de direccion de emisor, dirección, codigopostal, municipio, departamento, pais
             XElement DireccionRecp = new XElement(dte + "Direccion", receptor.Direccion);
             XElement CodigoPostalReceptor = new XElement(dte + "CodigoPostal", receptor.CodigoPostal);

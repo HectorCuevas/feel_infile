@@ -364,29 +364,27 @@ namespace FELFactura
             DireccionEmisor.Add(Pais);
 
 
+        
+
+
+            //datos Receptor
             XElement Receptor = null;
-            if (Constants.TIPO_DOC == "FESP")
-            {
-                Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
-              new XAttribute("IDReceptor", receptor.IDReceptor),
-              new XAttribute("NombreReceptor", receptor.NombreReceptor));
-                DatosEmision.Add(Receptor);
-            }
-            else
-            {
-                Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
-                 new XAttribute("IDReceptor", receptor.IDReceptor),
-                 new XAttribute("NombreReceptor", receptor.NombreReceptor));
-                DatosEmision.Add(Receptor);
-
-            }
-
+            Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
+                new XAttribute("IDReceptor", receptor.IDReceptor),
+                new XAttribute("NombreReceptor", receptor.NombreReceptor));
 
             //direccion del receptor
-
             XElement DireccionReceptor = new XElement(dte + "DireccionReceptor");
-
             Receptor.Add(DireccionReceptor);
+
+            if (!datosGenerales.tipoEspecial.Equals("NA"))
+            {
+                Receptor.Add(new XAttribute("TipoEspecial", datosGenerales.tipoEspecial));
+            }
+
+            DatosEmision.Add(Receptor);
+
+
 
             //elementos dentro de direccion de emisor, dirección, codigopostal, municipio, departamento, pais
 
