@@ -31,3 +31,9 @@ C:\Users\Norman\Documents\PROYECTOS FEL 2020\feel_infile\Modelos\obj\Release\Mod
 C:\Users\Norman\Documents\PROYECTOS FEL 2020\feel_infile\Modelos\obj\Release\Modelos.csproj.CoreCompileInputs.cache
 C:\Users\Norman\Documents\PROYECTOS FEL 2020\feel_infile\Modelos\obj\Release\Modelos.dll
 C:\Users\Norman\Documents\PROYECTOS FEL 2020\feel_infile\Modelos\obj\Release\Modelos.pdb
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\bin\Release\Modelos.dll
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\bin\Release\Modelos.pdb
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\obj\Release\Modelos.csproj.AssemblyReference.cache
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\obj\Release\Modelos.csproj.CoreCompileInputs.cache
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\obj\Release\Modelos.dll
+C:\Users\norma\OneDrive\Documentos\workspace\feel_infile\Modelos\obj\Release\Modelos.pdb

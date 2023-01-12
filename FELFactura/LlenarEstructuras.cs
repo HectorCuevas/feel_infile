@@ -32,6 +32,14 @@ namespace FELFactura
                 //}
 
                 ///////////////////////////////////
+                ///
+                var TipoEspecial = reader["TipoEspecial"];
+                if (TipoEspecial != null)
+                {
+                    datosGenerales.tipoEspecial = TipoEspecial.ToString();
+
+                }
+
 
                 var CodigoMoneda = reader["codigomoneda"];
                 if (CodigoMoneda != null)
