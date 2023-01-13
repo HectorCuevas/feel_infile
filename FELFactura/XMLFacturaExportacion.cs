@@ -191,10 +191,18 @@ namespace FELFactura
             DireccionEmisor.Add(Pais);
 
             //datos Receptor
-            XElement Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
-                new XAttribute("IDReceptor", "CF"),
+            XElement Receptor = null;
+            Receptor = new XElement(dte + "Receptor", new XAttribute("CorreoReceptor", receptor.CorreoReceptor),
+                new XAttribute("IDReceptor", receptor.IDReceptor),
                 new XAttribute("NombreReceptor", receptor.NombreReceptor));
+
+            if (!datosGenerales.tipoEspecial.Equals("NA"))
+            {
+                Receptor.Add(new XAttribute("TipoEspecial", datosGenerales.tipoEspecial));
+            }
+
             DatosEmision.Add(Receptor);
+
             //direccion del receptor
             XElement DireccionReceptor = new XElement(dte + "DireccionReceptor");
             Receptor.Add(DireccionReceptor);
