@@ -188,9 +188,9 @@ namespace FELFactura
                 new XAttribute("IDReceptor", receptor.IDReceptor),
                 new XAttribute("NombreReceptor", receptor.NombreReceptor));
 
-            if (!datosGenerales.tipoEspecial.Equals("NA"))
+            if (!datosGenerales.TipoEspecial.Equals("NA"))
             {
-                Receptor.Add(new XAttribute("TipoEspecial", datosGenerales.tipoEspecial));
+                Receptor.Add(new XAttribute("TipoEspecial", datosGenerales.TipoEspecial));
             }
 
             DatosEmision.Add(Receptor);

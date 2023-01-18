@@ -38,7 +38,7 @@ namespace FELFactura
                 var TipoEspecial = reader["TipoEspecial"];
                 if (TipoEspecial != null)
                 {
-                    datosGenerales.tipoEspecial = TipoEspecial.ToString();
+                    datosGenerales.TipoEspecial = TipoEspecial.ToString();
 
                 }
 

@@ -38,49 +38,10 @@ namespace FELFactura
 
             ReaderDataset();
 
-            if (Constants.TIPO_DOC == "NABN")
+         
+           xml = getXML(frases);
 
-            {
 
-                XMLNotasAbono xMLNotasAbono = new XMLNotasAbono();
-
-                xml = xMLNotasAbono.getXML(XMLInvoice, XMLDetailInvoce, "123546", fac_num);
-
-            }
-
-            else
-
-            if (Constants.TIPO_DOC == "FCAM" || Constants.TIPO_DOC == "FACT")
-
-            {
-
-                if (Constants.TIPO_EXPO == "SI")
-
-                {
-
-                    XMLFacturaExportacion xMLFacturaExportacion = new XMLFacturaExportacion();
-
-                    xml = xMLFacturaExportacion.getXML(XMLInvoice, XMLDetailInvoce, frases, fac_num);
-
-                }
-
-                else
-
-                {
-
-                    xml = getXML(frases);
-
-                }
-
-            }
-
-            else
-
-            {
-
-                xml = getXML(frases);
-
-            }
 
 
 
@@ -196,9 +157,9 @@ namespace FELFactura
                 new XAttribute("IDReceptor", receptor.IDReceptor),
                 new XAttribute("NombreReceptor", receptor.NombreReceptor));
 
-            if (!datosGenerales.tipoEspecial.Equals("NA"))
+            if (!datosGenerales.TipoEspecial.Equals("NA"))
             {
-                Receptor.Add(new XAttribute("TipoEspecial", datosGenerales.tipoEspecial));
+                Receptor.Add(new XAttribute("TipoEspecial", datosGenerales.TipoEspecial));
             }
 
             DatosEmision.Add(Receptor);
