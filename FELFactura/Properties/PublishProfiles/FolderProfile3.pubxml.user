@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\norma\OneDrive\Documentos\releases\thermo</_PublishTargetUrl>
-    <History>True|2023-01-19T01:20:22.7534752Z;True|2023-01-16T19:34:08.6035065-06:00;True|2023-01-13T12:50:07.7438827-06:00;</History>
+    <History>True|2023-01-20T22:32:54.7262956Z;True|2023-01-18T19:20:22.7534752-06:00;True|2023-01-16T19:34:08.6035065-06:00;True|2023-01-13T12:50:07.7438827-06:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -13,19 +13,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/25/2020 16:43:46</publishTime>
     </File>
     <File Include="bin/FELFactura.dll">
-      <publishTime>01/18/2023 19:20:21</publishTime>
+      <publishTime>01/20/2023 16:32:52</publishTime>
     </File>
     <File Include="bin/FELFactura.pdb">
-      <publishTime>01/18/2023 19:20:21</publishTime>
+      <publishTime>01/20/2023 16:32:52</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>11/25/2020 16:43:46</publishTime>
     </File>
     <File Include="bin/Modelos.dll">
-      <publishTime>01/18/2023 15:43:54</publishTime>
+      <publishTime>01/20/2023 16:30:27</publishTime>
     </File>
     <File Include="bin/Modelos.pdb">
-      <publishTime>01/18/2023 15:43:54</publishTime>
+      <publishTime>01/20/2023 16:30:27</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/25/2020 16:43:46</publishTime>
@@ -181,7 +181,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/25/2020 16:43:46</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/18/2023 15:43:54</publishTime>
+      <publishTime>01/20/2023 16:30:26</publishTime>
     </File>
   </ItemGroup>
 </Project>
