@@ -286,12 +286,7 @@ namespace FELFactura
                     }
                 }
             }
-            if (Constants.EXENTA && Constants.TIPO_DOC == "FACT")
-            {
-                XElement Frase3 = new XElement(dte + "Frase", new XAttribute("CodigoEscenario", "10"), new XAttribute("TipoFrase", "4"));
-                Frases.Add(Frase3);
 
-            }
             //Totales
             XElement Totales = new XElement(dte + "Totales");
             DatosEmision.Add(Totales);
