@@ -5,25 +5,27 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\norma\OneDrive\Documentos\releases\activalo</_PublishTargetUrl>
+    <History>True|2023-02-23T01:44:08.0137829Z;</History>
+    <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="AnnularDocumentWS.asmx">
       <publishTime>11/25/2020 16:43:46</publishTime>
     </File>
     <File Include="bin/FELFactura.dll">
-      <publishTime>01/13/2023 10:35:56</publishTime>
+      <publishTime>02/22/2023 19:44:07</publishTime>
     </File>
     <File Include="bin/FELFactura.pdb">
-      <publishTime>01/13/2023 10:35:56</publishTime>
+      <publishTime>02/22/2023 19:44:07</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>11/25/2020 16:43:46</publishTime>
     </File>
     <File Include="bin/Modelos.dll">
-      <publishTime>01/13/2023 10:35:55</publishTime>
+      <publishTime>02/22/2023 19:38:41</publishTime>
     </File>
     <File Include="bin/Modelos.pdb">
-      <publishTime>01/13/2023 10:35:55</publishTime>
+      <publishTime>02/22/2023 19:38:41</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/25/2020 16:43:46</publishTime>
@@ -179,7 +181,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/25/2020 16:43:46</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/13/2023 10:35:58</publishTime>
+      <publishTime>02/22/2023 19:23:09</publishTime>
     </File>
   </ItemGroup>
 </Project>
