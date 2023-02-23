@@ -671,6 +671,7 @@ namespace FELFactura
 
                                , new XAttribute(XNamespace.Xmlns + "cno", cno)
 
+                           , new XAttribute("NumeroDocumentoOrigen", nota.NumeroDocumentoOrigen)
                                , new XAttribute("FechaEmisionDocumentoOrigen", nota.FechaEmisionDocumentoOrigen)
 
                                , new XAttribute("MotivoAjuste", nota.MotivoAjuste)
@@ -769,6 +770,7 @@ namespace FELFactura
 
                             , new XAttribute(XNamespace.Xmlns + "cno", cno)
 
+                             , new XAttribute("NumeroDocumentoOrigen", nota.NumeroDocumentoOrigen)
                             , new XAttribute("FechaEmisionDocumentoOrigen", nota.FechaEmisionDocumentoOrigen)
 
                             , new XAttribute("MotivoAjuste", nota.MotivoAjuste)
