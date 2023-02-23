@@ -378,6 +378,7 @@ namespace FELFactura
                         {
                             XElement Referencias = new XElement(cno + "ReferenciasNota"
                                , new XAttribute(XNamespace.Xmlns + "cno", cno)
+                               , new XAttribute("NumeroDocumentoOrigen", nota.NumeroDocumentoOrigen)
                                , new XAttribute("FechaEmisionDocumentoOrigen", nota.FechaEmisionDocumentoOrigen)
                                , new XAttribute("MotivoAjuste", nota.MotivoAjuste)
                                , new XAttribute("NumeroAutorizacionDocumentoOrigen", nota.NumeroAutorizacionDocumentoOrigen)
@@ -427,6 +428,7 @@ namespace FELFactura
 
                         XElement Referencias = new XElement(cno + "ReferenciasNota"
                             , new XAttribute(XNamespace.Xmlns + "cno", cno)
+                            , new XAttribute("NumeroDocumentoOrigen", nota.NumeroDocumentoOrigen)
                             , new XAttribute("FechaEmisionDocumentoOrigen", nota.FechaEmisionDocumentoOrigen)
                             , new XAttribute("MotivoAjuste", nota.MotivoAjuste)
                             , new XAttribute("NumeroAutorizacionDocumentoOrigen", nota.NumeroAutorizacionDocumentoOrigen)
